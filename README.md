@@ -15,7 +15,7 @@ This site is a merchandise store for the Imprint Brand to promote the service an
 
 3 [Features](#3-features)
 
-4 [Testing](#4-testing)
+4 [Testing](#4-testing)X
 
 5 [Project Sign Off](#5-project-sign-off)
 
@@ -64,4 +64,4 @@ Imprint Founders
 
 - [Adam Farrell](https://www.linkedin.com/in/adampfarrell/)
 - [Liam Junkermann](https://www.linkedin.com/in/liamjunkermann/)
-- [Peader Kenny](https://www.linkedin.com/in/peadarkenny/)
+- [Peadar Kenny](https://www.linkedin.com/in/peadarkenny/)

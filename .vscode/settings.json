@@ -13,6 +13,11 @@
       "**/CVS": true
    },
    "files.autoSave": "off",
-   "workbench.colorTheme": "Visual Studio Dark",
+   "workbench.colorTheme": "Tokyo Night Storm",
    "terminal.integrated.gpuAcceleration": "canvas",
+   "cSpell.words": [
+      "Esports",
+      "Junkermann",
+      "Peader"
+   ],
 }

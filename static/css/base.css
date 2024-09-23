@@ -7,11 +7,10 @@ body {
     background-size: cover;
     height: calc(100vh - 164px);
     color: #555;
-    font-family: 'Kanit',sans-serif;
+    font-family: 'Kanit', sans-serif;
 }
 
-/* from Bulma */
-.icon {
+* from Bulma */ .icon {
     align-items: center;
     display: inline-flex;
     justify-content: center;
@@ -74,9 +73,9 @@ body {
 
 /* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
-  .container {
-    max-width: 80%;
-  }
+    .container {
+        max-width: 80%;
+    }
 }
 
 /* fixed top navbar only on medium and up */
@@ -94,7 +93,7 @@ body {
     }
 }
 
-/* adding padding to top for when the navbar is collapsed on mobile  */
+/* pad the top a bit when navbar is collapsed on mobile */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;

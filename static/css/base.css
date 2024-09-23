@@ -96,7 +96,7 @@ body {
 
 /* adding padding to top for when the navbar is collapsed on mobile  */
 @media (max-width: 991px) {
-    .header-container{
+    .header-container {
         padding-top: 116px;
     }
 

@@ -1,6 +1,6 @@
 # Imprint Esports
 
-![Imprint Esports Logo](doc/Imrpint.png)
+![imprint Esports Logo](doc/Imrpint.png)
 
 Imprint Esports is a gaming analytics company striving to produce the best visual indicators for professional player performance to team organizations, showing how their players are performing at the highest level of competition.
 

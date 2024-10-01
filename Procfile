@@ -1,1 +1,1 @@
-web: gunicorn boutique_ado.wsgi:applicationgit
+web: gunicorn imprint_store.wsgi:application

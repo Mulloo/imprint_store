@@ -31,7 +31,7 @@ SECRET_KEY =  os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['localhost','mulloo-imprint-store.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','mulloo-imprint-store.herokuapp.com','imprint-store-3d6ba50a85bd.herokuapp.com']
 
 
 # Application definition

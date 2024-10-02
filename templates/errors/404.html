@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Respawn Failed!</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin-top: 10%;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff4757;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        a {
+            text-decoration: none;
+            color: #ffa502;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #ff6348;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 15px;
+            border-radius: 5px;
+            background-color: #ff4757;
+            color: white;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: #ff6b81;
+        }
+        .error-image {
+            margin: 20px auto;
+            display: block;
+            width: 200px;
+            height: auto;
+        }
+        .tip {
+            font-style: italic;
+            color: #57606f;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img class="error-image" src="https://example.com/broken-controller.png" alt="Broken Controller">
+    <h1>404: Respawn Failed!</h1>
+    <p>Oops! You just took a wrong turn on the map.<br>Don't worry, even the best players miss a shot sometimes.</p>
+
+    <a href="{% url 'home' %}" class="btn">🏠 Head back to Home Base</a>
+    <a href="{% url 'products' %}" class="btn">🛒 Visit the Merch Store</a>
+
+    <p class="tip">"When in doubt, blame lag."</p>
+
+    <p>If you're still lost, let our support team carry you.</p>
+    <a href="https://linktr.ee/imprintesports">Imprint Socials</a>
+</div>
+
+</body>
+</html>

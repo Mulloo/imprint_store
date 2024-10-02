@@ -1,0 +1,23 @@
+.order-history-table {
+    height: 416px; 
+    overflow: auto;
+}
+
+#profile-update-form .form-control {
+    color: black;
+}
+
+#profile-update-form input::placeholder {
+    color: #6c757d;
+}
+
+#id_default_country,
+#id_default_country option:not(:first-child){
+    color: black;
+
+}
+
+#id_default_country option:first-child{
+    color: #aab7c4;
+}
+

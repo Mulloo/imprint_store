@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+from products.models import Product
 from django_countries.fields import CountryField
 
 
@@ -23,7 +24,7 @@ class UserProfile(models.Model):
     default_county = models.CharField(max_length=80, null=True, blank=True)
     default_postcode = models.CharField(max_length=20, null=True, blank=True)
     default_country = CountryField(
-        blank_label='(select country)', null=True, blank=True)
+        blank_label='(country)', null=True, blank=True)
 
     def __str__(self):
         return self.user.username
@@ -38,3 +39,5 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     # Existing users: just save the profile
     instance.userprofile.save()
+
+

@@ -1,0 +1,25 @@
+Hello {{order.full_name}},
+
+Thank you for your order from Imprint Store. Once your package ships we will send you a tracking number.
+
+Order Number. #{{ order.increment_id }}
+Order Date. {{ order.created_at }}
+
+Order Total. {{ order.grand_total }}
+Delivery Cost. {{ order.shipping_amount }}
+Grand Total. {{ order.grand_total }}
+
+Your Order will be shipped to the following
+Delivery Address. 
+{{ order.shipping_address.full_name }}
+{{ order.shipping_address.street }}
+{{ order.shipping_address.city }}, {{ order.shipping_address.region }} {{ order.shipping_address.postcode }}
+{{ order.shipping_address.country_name }}
+
+
+If you have any questions about your order, please contact us at {{ contact_email }} or call us at {{ contact_phone }}.
+
+Thank you for shopping with us online!
+
+The
+Imprint Store

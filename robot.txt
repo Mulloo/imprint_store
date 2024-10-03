@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: /accounts/
-Sitemap: 
+Sitemap: https://imprint-store-3d6ba50a85bd.herokuapp.com/sitemap.xml

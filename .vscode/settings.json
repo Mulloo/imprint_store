@@ -16,6 +16,8 @@
    "workbench.colorTheme": "Atom One Dark",
    "terminal.integrated.gpuAcceleration": "canvas",
    "cSpell.words": [
+      "boto",
+      "Boto",
       "BTFN",
       "corecss",
       "csfr",
@@ -23,6 +25,7 @@
       "Esports",
       "herokuapp",
       "Junkermann",
+      "MEDIAFILES",
       "Neue",
       "Peadar",
       "Peader",

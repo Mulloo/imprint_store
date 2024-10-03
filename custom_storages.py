@@ -8,3 +8,12 @@ class StaticStorage(S3Boto3Storage):
 
 class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION
+
+
+# Ensure STATICFILES_LOCATION and MEDIAFILES_LOCATION are defined in settings
+assert hasattr(
+    settings,
+    'STATICFILES_LOCATION'), "STATICFILES_LOCATION is not defined in settings"
+assert hasattr(
+    settings,
+    'MEDIAFILES_LOCATION'), "MEDIAFILES_LOCATION is not defined in settings"

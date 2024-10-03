@@ -1615,7 +1615,7 @@
     "model": "products.product",
     "fields": {
         "sku": "pp5006330197",
-        "name": "Stylus Flare Jeans",
+        "name": "Flare Jeans",
         "description": "Add a little retro to your wardrobe to create fashion fun with our Stylus flare jeans. high rise flare leg 5-pockets 32\" inseam cotton/polyester/rayon/spandex washable imported ",
         "price": 60.99,
         "category": 6,
@@ -2200,7 +2200,7 @@
     "model": "products.product",
     "fields": {
         "sku": "pp5007310136",
-        "name": "Stylus Flare Jeans",
+        "name": "Stylus Flare Jeans - Tall",
         "description": "Add a little retro to your wardrobe to create fashion fun with our Stylus flare jeans. high rise flare leg 5-pockets 32\" inseam cotton/polyester/rayon/spandex washable imported ",
         "price": 60.99,
         "category": 6,

@@ -145,3 +145,17 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+
+def product_list_by_tag(request, tag_slug):
+    """ A view to show all products by tag """
+
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    products = Product.objects.filter(tags=tag)
+
+    context = {
+        'tag': tag,
+        'products': products,
+    }
+
+    return render(request, 'products/products_by_tag.html', context)

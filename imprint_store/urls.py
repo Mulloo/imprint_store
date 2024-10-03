@@ -17,5 +17,4 @@ urlpatterns = [
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-
-handler404 = 'imprint_store.views.handler404'
+handler404 = handler404

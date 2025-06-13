@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>{% block head_title %}{% endblock %}</title>
+    <meta name="description" content="Your site description here.">
+    <meta name="keywords" content="keyword1, keyword2, keyword3">
+    <title>{% block head_title %}{% endblock head_title %}</title>
     {% block extra_head %}
-    {% endblock %}
+    {% endblock extra_head %}
   </head>
   <body>
     {% block body %}
@@ -13,7 +15,7 @@
       <strong>Messages:</strong>
       <ul>
         {% for message in messages %}
-        <li>{{message}}</li>
+        <li>{{ message }}</li>
         {% endfor %}
       </ul>
     </div>
@@ -31,10 +33,11 @@
         {% endif %}
       </ul>
     </div>
+    
     {% block content %}
-    {% endblock %}
-    {% endblock %}
+    {% endblock content %}
+    {% endblock body %}
     {% block extra_body %}
-    {% endblock %}
+    {% endblock extra_body %}
   </body>
 </html>

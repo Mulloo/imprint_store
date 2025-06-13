@@ -7,7 +7,7 @@
             <div class="col"></div>
         </div>
     </div>
-{% endblock %}
+{% endblock page_header %}
 
 {% block content %}
     <div class="overlay"></div>
@@ -23,13 +23,13 @@
 
         <div class="row">
             <div class="col-12 col-md-6">
-                <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
+                <form method="post" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% for field in form %}
                         {% if field.name != 'image' %}
                             {{ field | as_crispy_field }}
                         {% else %}
-                            {{ field}}
+                            {{ field }}
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
@@ -40,7 +40,7 @@
             </div>            
         </div>
     </div>
-{% endblock %}
+{% endblock content %}
 
 {% block postloadjs %}
     {{ block.super }}
@@ -50,4 +50,4 @@
             $('#image-name').text(`Image will be set to: ${file.name}`);
         });
     </script>
-{% endblock %}
+{% endblock postloadjs %}

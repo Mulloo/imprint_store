@@ -1,6 +1,6 @@
 # Imprint Esports
 
-![Imprint Esports Logo](doc/imrpint.png)
+![Imprint Esports Logo](doc/imprint.png)
 
 Imprint Esports is a gaming analytics company striving to produce the best visual indicators for professional player performance to team organizations, showing how their players are performing at the highest level of competition.
 
@@ -80,6 +80,8 @@ This [site](https://imprint-store-3d6ba50a85bd.herokuapp.com/) is a merchandise 
 
 3. **Technical SEO**:
    - Improve mobile performance, reduce page load times, and use clean URLs.
+
+   - Provide a sitemap and robots.txt file so search engines can efficiently crawl the site.
 
 4. **Backlinking**:
    - Partner with esports influencers and related blogs for backlinks.

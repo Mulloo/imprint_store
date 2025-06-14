@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
 
 {% block inner_content %}
 <hr>
@@ -21,4 +21,4 @@
   <button type="submit">{% trans "Sign Up" %}</button>
 </form>
 
-{% endblock %}
+{% endblock inner_content %}

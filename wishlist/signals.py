@@ -9,9 +9,3 @@ def create_wishlist(sender, instance, created, **kwargs):
     """ Create a wishlist for new users """
     if created:
         Wishlist.objects.create(user=instance)
-
-
-@receiver(post_save, sender=User)
-def save_wishlist(sender, instance, **kwargs):
-    """ Save the wishlist for existing users """
-    instance.wishlist.save()

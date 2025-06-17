@@ -41,12 +41,5 @@
         <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All Specials</a>
       </div>
     </li>
-    {% if user.is_authenticated %}
-    <li class="nav-item">
-      <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'wishlist:view_wishlist' %}">
-        <i class="fas fa-heart"></i> Wishlist
-      </a>
-    </li>
-    {% endif %}
   </ul>
 </div>

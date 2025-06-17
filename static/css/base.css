@@ -264,6 +264,12 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+/* ------------------------------- wishlist */
+.wishlist-container {
+    padding-top: 140px;
+    position: relative;
+    z-index: 1;
+}
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 992px) {

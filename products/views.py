@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
 
-from .models import Product, Category
+from .models import Product, Category, Tag
 from .forms import ProductForm
 
 
@@ -150,7 +150,7 @@ def delete_product(request, product_id):
 def product_list_by_tag(request, tag_slug):
     """ A view to show all products by tag """
 
-    tag = get_object_or_404(Tag, slug=tag_slug)
+    tag = get_object_or_404(Tag, slug=tag_slug, is_active=True)
     products = Product.objects.filter(tags=tag)
 
     context = {

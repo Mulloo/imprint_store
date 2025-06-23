@@ -7,6 +7,7 @@ class ProductAdmin(admin.ModelAdmin):
         'sku',
         'name',
         'category',
+        'tags',
         'price',
         'rating',
         'image',

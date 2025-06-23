@@ -11,7 +11,8 @@ body {
 }
 
 .hero-title {
-    background-color: #6c757d;
+    background-color: rgba(0, 0, 0, 0.6); /* semi-transparent black */
+    color: #fff;
 }
 
 

@@ -26,9 +26,11 @@
     <li class="nav-item dropdown">
       <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="homeware-link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pheriperals</a>
       <div class="dropdown-menu border-0" aria-labelledby="homeware-link">
-        <a href="{% url 'products' %}?category=" class="dropdown-item"> Keyboards </a>
-        <a href="{% url 'products' %}?category=kitchen_dining" class="dropdown-item"> Mouse &amp; Mousepad </a>
-        <a href="{% url 'products' %}?category=bed_bath,kitchen_dining" class="dropdown-item">All Peripherals</a> 
+        <a href="{% url 'products' %}?category=keyboards" class="dropdown-item"> Keyboards </a>
+        <a href="{% url 'products' %}?category=mousepads" class="dropdown-item"> Mousepads </a>
+        <a href="{% url 'products' %}?category=mice" class="dropdown-item"> Mice </a>
+        <a href="{% url 'products' %}?category=headsets" class="dropdown-item"> Headsets </a>
+        <a href="{% url 'products' %}?category=keyboards,mousepads,mice" class="dropdown-item"> All Peripherals</a> 
       </div>
     </li>
 

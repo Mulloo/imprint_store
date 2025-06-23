@@ -10,6 +10,11 @@ body {
     font-family: 'Lato';
 }
 
+.hero-title {
+    background-color: #6c757d;
+}
+
+
 .icon {
     align-items: center;
     display: inline-flex;

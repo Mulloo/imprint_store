@@ -153,9 +153,6 @@ def product_list_by_tag(request, tag_slug):
     tag = get_object_or_404(Tag, slug=tag_slug, is_active=True)
     products = Product.objects.filter(tags=tag)
 
-    context = {
-        'tag': tag,
-        'products': products,
-    }
+    context = {'tag': tag,'products': products,}
 
     return render(request, 'products/products_by_tag.html', context)

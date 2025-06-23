@@ -204,6 +204,7 @@ This [site](https://imprint-store-3d6ba50a85bd.herokuapp.com/) is a merchandise 
 ![erd](doc/erd-2.png)
 ![erd](doc/erd-3.png)
 ![erd](doc/erd-4.png)
+![gen-erd](doc/gen-erd.png)
 
 ---
 

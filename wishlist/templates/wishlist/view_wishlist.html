@@ -1,9 +1,16 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'checkout/css/whishlist.css' %}">
+{% endblock extra_css %}
 
 {% block page_header %}
-  <div class="container my-4">
-    <h2>{{ user.username }}'s Wishlist</h2>
-  </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
 {% endblock page_header %}
 
 {% block content %}
@@ -38,11 +45,3 @@
     </div>
   </div>
 {% endblock content %}
-
-{% comment %} TODO: need to move to AWS {% endcomment %} 
-<style> 
-  .wishlist-img {
-    max-height: 150px;
-    object-fit: contain;
-  }
-</style>

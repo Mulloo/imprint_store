@@ -1,1 +1,1 @@
-Imprint Store Confirmation for Order #{{ order.increment_id }}
+Imprint Store – Order Confirmation  #{{ order.order_number }}

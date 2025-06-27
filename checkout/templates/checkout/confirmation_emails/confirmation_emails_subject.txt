@@ -1,1 +1,2 @@
 Imprint Store – Order Confirmation  #{{ order.order_number }}
+Thank you for your order from Imprint Store!

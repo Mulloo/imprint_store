@@ -160,8 +160,9 @@ def checkout_success(request, order_number):
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
         # Attach the user's profile to the order
-        order.user_profile = profile
-        order.save()
+        if not order.user_profile:
+            order.user_profile = profile
+            order.save()
 
     if save_info:
         profile_data = {
@@ -191,5 +192,6 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        "from_profile": request.GET.get('from_profile', False),
     }
     return render(request, template, context)

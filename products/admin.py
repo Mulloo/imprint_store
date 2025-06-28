@@ -14,6 +14,8 @@ class ProductAdmin(admin.ModelAdmin):
 
     ordering = ('sku',)
 
+    filter_horizontal = ('tags',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = (
@@ -30,5 +32,5 @@ admin.site.register(Category, CategoryAdmin)
 class TagAdmin(admin.ModelAdmin):
     """ Tag Admin """
     list_display = ('name', 'slug', 'is_active')
-    filter_horizontal = ('tags',)
+    
     prepopulated_fields = {'slug': ('name',)}

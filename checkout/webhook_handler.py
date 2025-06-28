@@ -112,6 +112,10 @@ class StripeWH_Handler:
                 time.sleep(1)
         if order_exists:
             self._send_confirmation_email(order)
+            if profile and order.user_profile is None:
+                order.user_profile = profile
+                order.save(update_fields=['user_profile'])
+                
             return HttpResponse(
                 content=f'Webhook received: {event["type"]} | SUCCESS: Verified order already in database',status=200)
         else:

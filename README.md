@@ -10,32 +10,31 @@ This [site](https://imprint-store-3d6ba50a85bd.herokuapp.com/) is a merchandise 
 ## Contents
 
 - [Imprint Esports](#imprint-esports)
-  - [Contents](#contents)
-  - [Agile](#agile)
-    - [Target Audience](#target-audience)
-    - [User Stories](#user-stories)
-      - [New Visitor Goals](#new-visitor-goals)
-      - [Returning Visitor Goals](#returning-visitor-goals)
-      - [Admin Goals](#admin-goals)
-  - [SEO Strategy for Imprint Esports Store](#seo-strategy-for-imprint-esports-store)
-  - [Business Model for Imprint Esports Store](#business-model-for-imprint-esports-store)
-    - [Revenue Streams](#revenue-streams)
-    - [Cost Structure](#cost-structure)
-    - [Customer Relationships](#customer-relationships)
-    - [Key Channels](#key-channels)
-    - [Value Proposition](#value-proposition)
-  - [Features](#features)
-    - [Existing Features](#existing-features)
-    - [Features Left to Implement](#features-left-to-implement)
-  - [Testing](#testing)
-  - [ERD](#erd)
-  - [Deployment](#deployment)
-    - [Deployment Steps](#deployment-steps)
-  - [Technologies Used](#technologies-used)
-    - [Languages](#languages)
-    - [Frameworks, Libraries \& Tools](#frameworks-libraries--tools)
-  - [Credits](#credits)
-  - [Acknowledgements](#acknowledgements)
+- [Agile Development](#agile)
+  - [Target Audience](#target-audience)
+  - [User Stories](#user-stories)
+    - [New Visitor Goals](#new-visitor-goals)
+    - [Returning Visitor Goals](#returning-visitor-goals)
+    - [Admin Goals](#admin-goals)
+- [SEO Strategy](#seo-strategy-for-imprint-esports-store)
+- [Business Model](#business-model-for-imprint-esports-store)
+  - [Revenue Streams](#revenue-streams)
+  - [Cost Structure](#cost-structure)
+  - [Customer Relationships](#customer-relationships)
+  - [Key Channels](#key-channels)
+  - [Value Proposition](#value-proposition)
+- [Features](#features)
+  - [Existing Features](#existing-features)
+  - [Planned Features](#features-left-to-implement)
+- [Testing](#testing)
+- [Entity Relationship Diagram (ERD)](#erd)
+- [Deployment](#deployment)
+  - [Deployment Steps](#deployment-steps)
+- [Technologies Used](#technologies-used)
+  - [Languages](#languages)
+  - [Frameworks, Libraries & Tools](#frameworks-libraries--tools)
+- [Credits](#credits)
+- [Acknowledgements](#acknowledgements)
 
 ---
 
@@ -250,6 +249,7 @@ The project was deployed using **Heroku** and **AWS S3** for static file storage
 ## Credits
 
 I do not own Imprint Esports and all credit for the brand and company goes to its founders.
+All products produced are no real images were edited for the project.
 
 ---
 
@@ -262,7 +262,8 @@ A massive thank you to the Imprint founders fo the permission to use the brand a
 Imprint Founders
 
 - [Adam Farrell](https://www.linkedin.com/in/adampfarrell/)
-- [Liam Junkermann](https://www.linkedin.com/in/liamjunkermann/)
 - [Peadar Kenny](https://www.linkedin.com/in/peadarkenny/)
+- [Liam Junkermann](https://www.linkedin.com/in/liamjunkermann/)
+
 
 ---

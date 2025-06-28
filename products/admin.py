@@ -30,4 +30,5 @@ admin.site.register(Category, CategoryAdmin)
 class TagAdmin(admin.ModelAdmin):
     """ Tag Admin """
     list_display = ('name', 'slug', 'is_active')
+    filter_horizontal = ('tags',)
     prepopulated_fields = {'slug': ('name',)}

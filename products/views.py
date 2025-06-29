@@ -82,10 +82,12 @@ def product_detail(request, product_id):
     is_in_wishlist = False
     if request.user.is_authenticated:
         try:
+            # Import here to avoid circular imports
             from wishlist.models import Wishlist
-            wishlist = Wishlist.objects.get(user=request.user)
-            is_in_wishlist = product in wishlist.products.all()
-        except Wishlist.DoesNotExist:
+            wishlist, created = Wishlist.objects.get_or_create(user=request.user)
+            is_in_wishlist = wishlist.products.filter(id=product.id).exists()
+        except Exception:
+            # If there's any error with wishlist, just set to False
             is_in_wishlist = False
 
     context = {

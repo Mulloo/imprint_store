@@ -77,11 +77,22 @@ def product_detail(request, product_id):
     reviews = product.reviews.filter(approved=True)
 
     review_form = ReviewForm()
+    
+    # Check if product is in user's wishlist
+    is_in_wishlist = False
+    if request.user.is_authenticated:
+        try:
+            from wishlist.models import Wishlist
+            wishlist = Wishlist.objects.get(user=request.user)
+            is_in_wishlist = product in wishlist.products.all()
+        except Wishlist.DoesNotExist:
+            is_in_wishlist = False
 
     context = {
         'product': product,
         'reviews': reviews,
         'review_form': review_form,
+        'is_in_wishlist': is_in_wishlist,
     }
 
     return render(request, 'products/product_detail.html', context)

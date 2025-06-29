@@ -479,3 +479,45 @@ input[name='q']::placeholder {
     40% { transform: translateX(-50%) translateY(-10px); }
     60% { transform: translateX(-50%) translateY(-5px); }
 }
+
+/* product form */
+
+/* Tags checkbox styling */
+.form-group label[for="id_tags"] {
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+#id_tags ul {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.5rem;
+}
+
+#id_tags li {
+    margin-bottom: 0.5rem;
+}
+
+#id_tags input[type="checkbox"] {
+    margin-right: 0.5rem;
+    transform: scale(1.2);
+}
+
+#id_tags label {
+    font-weight: normal;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+#id_tags label:hover {
+    background-color: #f8f9fa;
+}
+
+#id_tags input[type="checkbox"]:checked + label {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}

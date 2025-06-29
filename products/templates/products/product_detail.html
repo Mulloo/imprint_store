@@ -6,7 +6,12 @@
       <div class="col"></div>
     </div>
   </div>
-{% endblock page_header %} {% block content %}
+{% endblock page_header %}
+{% block extra_css %}
+    <link rel="stylesheet"
+          href="{% static 'products/css/reviews.css' %}">
+{% endblock %}
+{% block content %}
   <div class="overlay"></div>
   <div class="container-fluid">
     <div class="row">
@@ -105,9 +110,9 @@
           <hr class="my-5">
           <h4 id="reviews">Customer Reviews ({{ reviews.count }})</h4>
           {% for r in reviews %}
-            <div class="border rounded p-3 mb-3">
+            <div class="review-card">
                 <strong>{{ r.title }}</strong>
-                <span class="text-warning ml-2">
+                <span class="review-stars">
                     {{ "★"|repeat:r.rating }}{{ "☆"|repeat:5|slice:":-r.rating" }}
                 </span>
                 <small class="text-muted d-block">

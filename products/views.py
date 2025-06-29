@@ -3,11 +3,17 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.db.models.functions import Lower
+from django.views.generic import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
+from .mixins import ReviewAuthorRequiredMixin
 from .models import Product, Category, Tag
 from .forms import ProductForm
 from .forms import ReviewForm
-from .models import ProductReview
+from .models import Product, ProductReview
+
+
+
 
 
 def all_products(request):
@@ -167,24 +173,37 @@ def product_list_by_tag(request, tag_slug):
 
 
 
-@login_required
-def add_review(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
 
-    # Block duplicate reviews (enforced in DB too)
-    if ProductReview.objects.filter(product=product, user=request.user).exists():
-        messages.error(request, "You’ve already reviewed this product.")
-        return redirect("product_detail", product_id)
+class ReviewCreateView(CreateView):
+    model = ProductReview
+    form_class = ReviewForm
+    template_name = "products/reviews/review_form.html"  # Consistent template path
 
-    form = ReviewForm(request.POST or None)
-    if request.method == "POST" and form.is_valid():
-        review = form.save(commit=False)
-        review.product = product
-        review.user    = request.user
-        review.save()                 # starts as approved=False
-        messages.success(request, "Thank you! Your review is awaiting approval.")
-        return redirect("product_detail", product_id)
+    def dispatch(self, request, *args, **kwargs):
+        self.product = get_object_or_404(Product, pk=kwargs["product_id"])  # Changed from "pk" to "product_id"
+        return super().dispatch(request, *args, **kwargs)
 
-    # Render a small modal / separate page
-    return render(request, "reviews/add_review.html",
-                  {"form": form, "product": product})
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.product = self.product
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+
+class ReviewUpdateView(ReviewAuthorRequiredMixin, UpdateView):
+    model         = ProductReview
+    form_class    = ReviewForm
+    template_name = "products/reviews/review_form.html"
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+
+class ReviewDeleteView(ReviewAuthorRequiredMixin, DeleteView):
+    model = ProductReview
+    template_name = "products/reviews/review_confirm_delete.html"  # Fixed path
+
+    def get_success_url(self):
+        return self.object.product.get_absolute_url()

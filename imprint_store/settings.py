@@ -43,7 +43,9 @@ INSTALLED_APPS = [
 
     # Other apps
     'crispy_forms',
+    'crispy_bootstrap4',
     'storages',
+    
 
     # Custom apps
     'wishlist.apps.WishlistConfig',

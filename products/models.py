@@ -1,4 +1,6 @@
+from crum import get_current_request
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 from django.conf import settings
 from django.db import models
@@ -99,6 +101,14 @@ class Tag(models.Model):
 
 class ProductReview(models.Model):
     """Product Review model"""
+
+    def get_absolute_url(self):
+        return reverse("product_detail", args=[self.product.id]) + '#reviews'
+
+    def is_owner(self):
+        from django.contrib.auth import get_user
+        request = get_current_request()
+        return request and request.user == self.user
     class Rating(models.IntegerChoices):
         ONE   = 1, _("★☆☆☆☆")
         TWO   = 2, _("★★☆☆☆")

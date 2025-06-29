@@ -21,3 +21,22 @@
     color: #aab7c4;
 }
 
+/* Review section styles */
+.review-card {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.review-stars {
+    font-size: 1rem;
+    letter-spacing: .05em;
+    color: #f5c518;
+}
+
+.review-stars .text-muted {
+    color: #e2e2e2 !important;
+}
+

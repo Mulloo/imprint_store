@@ -1,61 +1,57 @@
-/* ──────────────────────────────────────────────────────────────
-   Product detail – reviews section
-   save as  static/products/css/reviews.css
-   ──────────────────────────────────────────────────────────── */
+/* ────────────────────────────────────────────────
+   reviews.css  (static/products/css/reviews.css)
+   ──────────────────────────────────────────────── */
 
-/* section heading */
-#reviews {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    scroll-margin-top: 6rem;      
+/* ── Generic overrides for pages that must hide the hero ───────── */
+body.no-hero{
+    background:#fff !important;
+    height:auto !important;
 }
 
-/* each individual review “card”  */
-.review-card {
-    background: #fff;
-    border: 1px solid #e4e4e4;
-    border-radius: .5rem;
-    padding: 1rem 1.25rem;
-    margin-bottom: 1rem;
+/* ── Product-detail “Customer Reviews” section ─────────────────── */
+#reviews{
+    font-weight:600;
+    margin-bottom:1rem;
+    scroll-margin-top:6rem;       /* so anchor links land neatly */
 }
 
-/* headline & star line sit on one row */
-.review-card > strong {
-    display: inline-block;
-    margin-right: .25rem;
+/* each review card */
+.review-card{
+    background:#fff;
+    border:1px solid #e4e4e4;
+    border-radius:.5rem;
+    padding:1rem 1.25rem;
+    margin-bottom:1rem;
 }
 
-/* star string — filled + empty */
+/* headline & stars on same row */
+.review-card > strong{
+    display:inline-block;
+    margin-right:.25rem;
+}
+
+/* star display */
 .review-stars{
-    font-size: 1rem;
-    letter-spacing: .05em;       
-    vertical-align: middle;
-    color: #f5c518;               
+    font-size:1rem;
+    letter-spacing:.05em;
+    vertical-align:middle;
+    color:#f5c518;                /* filled stars */
 }
+.review-stars .text-muted{color:#e2e2e2;}  /* empty stars */
 
-.review-stars .empty{
-    color:#e2e2e2;                
-}
-
-/* meta line (author • date) */
+/* meta line (author · date) */
 .review-meta{
     font-size:.85rem;
-    color:#6c757d;                
+    color:#6c757d;
 }
 
-/* ---- leave-a-review collapse form ------------------------- */
+/* ── “Leave a Review” collapse form ───────────────────────────── */
+#leaveReview.collapse{margin-top:1.5rem;}
 
-#leaveReview.collapse{
-    margin-top:1.5rem;
-}
-
-/* square-edged inputs to match rest of site */
 #leaveReview .form-control,
 #leaveReview textarea{
-    border-radius:0;
+    border-radius:0;              /* square inputs to match site */
 }
-
-/* primary button – keep site’s black theme */
 #leaveReview button.btn-primary{
     background:#000;
     border:none;
@@ -63,3 +59,28 @@
     padding:.5rem 2rem;
     text-transform:uppercase;
 }
+
+/* ── Delete-confirmation screen ───────────────────────────────── */
+.review-delete-wrapper{
+    position:absolute;            /* exact centering */
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:#fff;
+    max-width:520px;
+    width:90%;
+    padding:2rem 2.5rem;
+    border-radius:8px;
+    text-align:center;
+    box-shadow:0 6px 24px rgba(0,0,0,.2);
+}
+.review-delete-wrapper h2{font-weight:700;margin-bottom:.75rem;}
+.review-delete-wrapper p{color:#6c757d;}
+
+.review-delete-wrapper .btn-group{
+    display:flex;
+    justify-content:center;
+    gap:1rem;
+    margin-top:1rem;
+}
+.review-delete-wrapper .btn{min-width:130px;}

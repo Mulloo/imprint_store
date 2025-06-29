@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
 
+from products.models import ProductReview
 from checkout.models import Order
 
 
@@ -27,10 +28,18 @@ def profile(request):
         form = UserProfileForm(instance=profile)
     orders = profile.orders.all().order_by('-date')
 
+    reviews = (
+        ProductReview.objects
+        .select_related('product')
+        .filter(user=profile.user)
+        .order_by('-created_at')
+    )
+
     template = 'profiles/profile.html'
     context = {
         'form': form,
         'orders': orders,
+        'reviews': reviews,
         'on_profile_page': True
     }
 

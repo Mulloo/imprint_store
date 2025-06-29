@@ -1,4 +1,6 @@
-{% extends "base.html" %} {% load static %} {% block page_header %}
+{% extends "base.html" %} 
+{% load static review_extras %}
+{% block page_header %}
   <div class="container header-container">
     <div class="row">
       <div class="col"></div>
@@ -100,11 +102,47 @@
                 </form>
                 {% endif %}
         </div>
+          <hr class="my-5">
+          <h4 id="reviews">Customer Reviews ({{ reviews.count }})</h4>
+          {% for r in reviews %}
+            <div class="border rounded p-3 mb-3">
+                <strong>{{ r.title }}</strong>
+                <span class="text-warning ml-2">
+                    {{ "★"|repeat:r.rating }}{{ "☆"|repeat:5|slice:":-r.rating" }}
+                </span>
+                <small class="text-muted d-block">
+                    by {{ r.user }} • {{ r.created_at|date:"M d, Y" }}
+                </small>
+                <p class="mb-0">{{ r.content|linebreaksbr }}</p>
+            </div>
+          {% empty %}
+            <p class="text-muted">No reviews yet – be the first!</p>
+          {% endfor %}
+
+          {% if user.is_authenticated %}
+            <button class="btn btn-outline-primary mt-3"
+                    data-toggle="collapse" data-target="#leaveReview">
+                Leave a review
+            </button>
+
+            <div id="leaveReview" class="collapse mt-3">
+                <form method="post" action="{% url 'add_review' product.id %}">
+                    {% csrf_token %}
+                    {{ review_form.as_p }}
+                    <button class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+          {% else %}
+            <p class="small mt-3">
+                <a href="{% url 'account_login' %}?next={{ request.path }}">
+                  Sign in
+                </a> to write a review.
+            </p>
+          {% endif %}
       </div>
     </div>
   </div>
 {% endblock content %}
-
 {% block postloadjs %}
 {{ block.super }}
 {% include "products/includes/quantity_input_script.html" %}

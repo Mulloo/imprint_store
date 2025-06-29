@@ -6,6 +6,8 @@ from django.db.models.functions import Lower
 
 from .models import Product, Category, Tag
 from .forms import ProductForm
+from .forms import ReviewForm
+from .models import ProductReview
 
 
 def all_products(request):
@@ -66,8 +68,14 @@ def product_detail(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
+    reviews = product.reviews.filter(approved=True)
+
+    review_form = ReviewForm()
+
     context = {
         'product': product,
+        'reviews': reviews,
+        'review_form': review_form,
     }
 
     return render(request, 'products/product_detail.html', context)
@@ -156,3 +164,27 @@ def product_list_by_tag(request, tag_slug):
     context = {'tag': tag,'products': products,}
 
     return render(request, 'products/products_by_tag.html', context)
+
+
+
+@login_required
+def add_review(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+
+    # Block duplicate reviews (enforced in DB too)
+    if ProductReview.objects.filter(product=product, user=request.user).exists():
+        messages.error(request, "You’ve already reviewed this product.")
+        return redirect("product_detail", product_id)
+
+    form = ReviewForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        review = form.save(commit=False)
+        review.product = product
+        review.user    = request.user
+        review.save()                 # starts as approved=False
+        messages.success(request, "Thank you! Your review is awaiting approval.")
+        return redirect("product_detail", product_id)
+
+    # Render a small modal / separate page
+    return render(request, "reviews/add_review.html",
+                  {"form": form, "product": product})

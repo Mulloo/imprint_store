@@ -1,0 +1,65 @@
+/* ──────────────────────────────────────────────────────────────
+   Product detail – reviews section
+   save as  static/products/css/reviews.css
+   ──────────────────────────────────────────────────────────── */
+
+/* section heading */
+#reviews {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    scroll-margin-top: 6rem;      
+}
+
+/* each individual review “card”  */
+.review-card {
+    background: #fff;
+    border: 1px solid #e4e4e4;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* headline & star line sit on one row */
+.review-card > strong {
+    display: inline-block;
+    margin-right: .25rem;
+}
+
+/* star string — filled + empty */
+.review-stars{
+    font-size: 1rem;
+    letter-spacing: .05em;       
+    vertical-align: middle;
+    color: #f5c518;               
+}
+
+.review-stars .empty{
+    color:#e2e2e2;                
+}
+
+/* meta line (author • date) */
+.review-meta{
+    font-size:.85rem;
+    color:#6c757d;                
+}
+
+/* ---- leave-a-review collapse form ------------------------- */
+
+#leaveReview.collapse{
+    margin-top:1.5rem;
+}
+
+/* square-edged inputs to match rest of site */
+#leaveReview .form-control,
+#leaveReview textarea{
+    border-radius:0;
+}
+
+/* primary button – keep site’s black theme */
+#leaveReview button.btn-primary{
+    background:#000;
+    border:none;
+    border-radius:0;
+    padding:.5rem 2rem;
+    text-transform:uppercase;
+}

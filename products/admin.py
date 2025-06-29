@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Product, Category, Tag
+from .models import Product, Category, Tag, ProductReview
+
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -34,3 +35,15 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('name', 'slug', 'is_active')
     
     prepopulated_fields = {'slug': ('name',)}
+
+
+@admin.register(ProductReview)
+class ProductReviewAdmin(admin.ModelAdmin):
+    list_display  = ("product", "user", "rating", "approved", "created_at")
+    list_filter   = ("approved", "rating", "created_at")
+    search_fields = ("product__name", "user__username", "title", "content")
+    actions       = ["approve_selected"]
+
+    @admin.action(description="Mark selected reviews as approved")
+    def approve_selected(self, request, queryset):
+        queryset.update(approved=True)

@@ -1,5 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
+from django.conf import settings
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class Category(models.Model):
@@ -92,3 +96,33 @@ class Tag(models.Model):
     def get_not_active_tags(cls):
         """Get not active tags"""
         return cls.objects.filter(is_active=False)
+
+class ProductReview(models.Model):
+    """Product Review model"""
+    class Rating(models.IntegerChoices):
+        ONE   = 1, _("★☆☆☆☆")
+        TWO   = 2, _("★★☆☆☆")
+        THREE = 3, _("★★★☆☆")
+        FOUR  = 4, _("★★★★☆")
+        FIVE  = 5, _("★★★★★")     
+    
+    product = models.ForeignKey(
+        'products.Product',
+        related_name='reviews',
+        on_delete=models.CASCADE)
+    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             related_name='reviews',
+                                on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    rating = models.PositiveSmallIntegerField(choices=Rating.choices)
+    created_at = models.DateTimeField(default=timezone.now)
+    approved = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ('product', 'user')
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f'{self.product.name} - {self.user.username}'

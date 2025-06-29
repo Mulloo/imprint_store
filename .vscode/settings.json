@@ -16,6 +16,7 @@
    "workbench.colorTheme": "One Dark Pro Night Flat",
    "terminal.integrated.gpuAcceleration": "canvas",
    "cSpell.words": [
+      "allauth",
       "boto",
       "Boto",
       "BTFN",
@@ -48,6 +49,7 @@
       "Peader",
       "pooler",
       "postloadjs",
+      "psycopg",
       "qwkfe",
       "signup",
       "stylesheet",

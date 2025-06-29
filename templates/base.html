@@ -55,7 +55,8 @@
     {% endblock corecss %}
 
     {% block extra_css %}
-
+    {{ block.super }}
+    <link rel="stylesheet" href="//cdn-images.mailchimp.com/embedcode/classic-061523.css">
     {% endblock extra_css %}
 
     {% block corejs %}

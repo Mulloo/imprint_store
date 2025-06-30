@@ -11,3 +11,6 @@ cloudinary_python.txt
 *.sqlite3
 *.pyc
 __pycache__
+setup.cfg
+formatting-changes.pathch
+.venv/

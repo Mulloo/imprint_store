@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('products', '0003_remove_product_rating'),
+        ("products", "0003_remove_product_rating"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='rating',
+            model_name="product",
+            name="rating",
             field=models.DecimalField(decimal_places=2, default=0, max_digits=6),
             preserve_default=False,
         ),

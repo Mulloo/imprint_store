@@ -1,15 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Index.js loaded');
+    // console.log('Index.js loaded');
     
     // Smooth scroll for the scroll indicator
     const scrollIndicator = document.querySelector('.scroll-indicator');
     const newsletterSection = document.querySelector('.newsletter-peek');
     
     if (scrollIndicator && newsletterSection) {
-        console.log('Setting up scroll indicator click handler');
+        // console.log('Setting up scroll indicator click handler');
         scrollIndicator.addEventListener('click', function(e) {
             e.preventDefault();
-            console.log('Scroll indicator clicked');
+            // console.log('Scroll indicator clicked');
             
             // Add a slight delay for better UX
             setTimeout(function() {
@@ -20,10 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 100);
         });
     } else {
-        console.log('Missing elements:', {
-            scrollIndicator: !!scrollIndicator,
-            newsletterSection: !!newsletterSection
-        });
+        // console.log('Missing elements:', {
+        //     scrollIndicator: !!scrollIndicator,
+        //     newsletterSection: !!newsletterSection
+        // });
     }
     
     // Add scroll-based animations

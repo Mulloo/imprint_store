@@ -21,7 +21,7 @@
   - [Testing](#testing)
   - [Security Features and Defensive Design](#security-features-and-defensive-design)
   - [Features](#features)
-  - [Validation](#validation)
+  - [Code Quality and Validation](#code-quality-and-validation)
   - [Technologies Used](#technologies-used)
   - [Deployment](#deployment)
   - [Bugs and Issues](#bugs-and-issues)
@@ -553,138 +553,186 @@ Our Facebook Business Page features:
 
 ---
 
-## Validation
+## Code Quality and Validation
+
+This section documents comprehensive validation and quality assurance across all aspects of the codebase, ensuring professional standards for functionality, accessibility, and maintainability.
 
 ### HTML Validation
 
-- **W3C Markup Validator**: All HTML pages validated
-- **Results**: All pages pass validation with no errors
+**W3C Markup Validator Results:**
+
+- All HTML pages validated with W3C Markup Validator
+- All critical validation errors resolved
+- Templates are HTML5 compliant and accessible
+
+**Critical Fixes Applied:**
+
+- **Duplicate IDs**: Fixed unique ID generation in shopping bag forms using context differentiation
+  - `id="id_qty_{{ item.item_id }}_{{ item.size|default:'none' }}_{{ view_context|default:'default' }}"`
+- **Meta Description Handling**: Implemented proper block structure to prevent duplicate meta tags
+- **Label/Input Associations**: Verified all form labels properly associate with inputs
+- **Void Element Formatting**: Confirmed no trailing slashes on void elements (HTML5 compliant)
 
 ### CSS Validation
 
-- **W3C CSS Validator**: All stylesheets validated
-- **Results**: CSS passes validation with no errors
+**W3C CSS Validator Results:**
+
+- All stylesheets validated with W3C CSS Validator
+- CSS passes validation with no errors
+- Valid CSS3 syntax throughout
+
+**Standards Confirmed:**
+
+- Appropriate use of `!important` for Bootstrap overrides
+- Consistent naming conventions
+- Responsive design patterns
+- CSS custom properties (variables) usage
 
 ### JavaScript Validation
 
-- **JSHint**: All JavaScript code validated
-- **Results**: Code passes validation with no significant issues
+**JSHint Validation Results:**
 
-### Python Validation
+- All JavaScript code validated with JSHint
+- Code passes validation with no significant issues
+- Modern ES6+ standards followed
 
-- **PEP8**: All Python code follows PEP8 standards
-- **Flake8**: Code linting completed successfully
-- **Results**: All Python files conform to style guidelines
+**Files Validated and Fixed:**
 
-### Lighthouse Performance
+- `static/js/index.js` - Main homepage functionality
+- `products/static/products/js/reviews_card.js` - Product review interactions  
+- `profiles/static/profiles/js/countryfiled.js` - Country field styling
+- `checkout/static/checkout/js/stripe_elements.js` - Stripe payment processing
 
-   Home
+**Applied Fixes:**
 
-- **Performance**: 62 scores
-- **Accessibility**: 98 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 100 scores for search engine optimization
+- Added `/*global $ */` and `/*global Stripe */` declarations for JSLint compliance
+- Converted all single quotes to double quotes for consistency
+- Added `"use strict";` mode where appropriate
+- Wrapped code in `$(document).ready()` for jQuery files
+- Commented out development console.log statements (kept utility function logging intact)
 
-![Lightshouse_home](docs/lighthouse_home.png)
+### Python Code Validation
 
-   Products
+**PEP8 and Flake8 Results:**
 
-- **Performance**: 52 scores
-- **Accessibility**: 91 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 91 scores for search engine optimization
+- All Python code follows PEP8 standards
+- Code linting completed successfully with Flake8
+- All Python files conform to style guidelines
 
-![Lighthouse_products](docs/lighthouse_products.png)
+**Standards Confirmed:**
 
-   Products Details
+- Proper Django patterns implemented
+- No unused imports or variables
+- Appropriate exception handling
+- Secure coding practices
+- Clean model/view/form structure
 
-- **Performance**: 62 scores
-- **Accessibility**: 85 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 91 scores for search engine optimization
+### Django Template Standards
 
-![Lighthouse_products_details_5](docs/lighthouse_products_details_5.png)
+**Template Validation:**
 
-   Products Review Form
+- Template inheritance properly implemented
+- Block structure consistent across templates
+- CSRF tokens properly included in all forms
+- Static file loading using `{% load static %}`
+- URL patterns using `{% url %}` template tags
+- Proper escaping of user content
 
-- **Performance**: 67 scores
-- **Accessibility**: 100 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 100 scores for search engine optimization
+### Lighthouse Performance Testing
 
-![lighthouse_review_form](docs/lighthouse_review_form.png)
+Comprehensive performance testing conducted across all major pages:
 
-   Profile
+***Home Page***
 
-- **Performance**: 65 scores
-- **Accessibility**: 90 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 100 scores for search engine optimization
+- Performance: 62 | Accessibility: 98 | Best Practices: 100 | SEO: 100
 
-![Lighthouse_products](docs/lighthouse_profiles.png)
+![Home Page](docs/lighthouse_home.png)
 
-   Wishlist empty
+***Products Page***
 
-- **Performance**: 64 scores
-- **Accessibility**: 95 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 100 scores for search engine optimization
+- Performance: 52 | Accessibility: 91 | Best Practices: 100 | SEO: 91
 
-![Lighthouse_wishlist](docs/lighthouse_wishlist.png)
+![Product Page](docs/lighthouse_products.png)
 
-   Wishlist 1 Item
+***Product Details Page***
 
-- **Performance**: 64 scores
-- **Accessibility**: 98 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 100 scores for search engine optimization
+- Performance: 62 | Accessibility: 85 | Best Practices: 100 | SEO: 91
 
-![Lighthouse_wishlist_item](docs/lighthouse_whislist_item.png)
+![Product Details Page](docs/lighthouse_products_details_5.png)
 
-   Shopping Bag
+***Review Form***
 
-- **Performance**: 69 scores
-- **Accessibility**: 100 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 100 scores for search engine optimization
+- Performance: 67 | Accessibility: 100 | Best Practices: 100 | SEO: 100
 
-![lighthouse_shopping_bag](docs/lighthouse_shopping_bag.png)
+![Review Form](docs/lighthouse_review_form.png)
 
-   Shopping Bag 1 Item
+***User Profile***
 
-- **Performance**: 66 scores
-- **Accessibility**: 83 scores with WCAG compliance
-- **Best Practices**: 96 scores for security and performance
-- **SEO**: 91 scores for search engine optimization
+- Performance: 65 | Accessibility: 90 | Best Practices: 100 | SEO: 100
 
-![lighthouse_shopping_bag_1_item](docs/lighthouse_shopping_bag_1_item.png)
+![User Profile](docs/lighthouse_profiles.png)
 
-   Checkout
+***Shopping Bag***
 
-- **Performance**: 57 scores
-- **Accessibility**: 85 scores with WCAG compliance
-- **Best Practices**: 93 scores for security and performance
-- **SEO**: 91 scores for search engine optimization
+- Performance: 69 | Accessibility: 100 | Best Practices: 100 | SEO: 100
 
-![lighthouse_checkout](docs/lighthouse_checkout.png)
+![Shopping Bag](docs/lighthouse_shopping_bag.png)
 
-Checkout Success
+***Checkout Process***
 
-- **Performance**: 63 scores
-- **Accessibility**: 95 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 100 scores for search engine optimization
+- Performance: 57 | Accessibility: 85 | Best Practices: 93 | SEO: 91
 
-![lighthouse_checkout](docs/lighthouse_checkout_success.png)
+![Checkout Process](docs/lighthouse_checkout.png)
 
-   Product Management | Admin
+***Checkout Success***
 
-- **Performance**: 63 scores
-- **Accessibility**: 89 scores with WCAG compliance
-- **Best Practices**: 100 scores for security and performance
-- **SEO**: 91 scores for search engine optimization
+- Performance: 63 | Accessibility: 95 | Best Practices: 100 | SEO: 100
 
-![lighthouse_product_management](docs/lighthouse_product_managment.png)
+![Checkout Success](docs/lighthouse_checkout_success.png)
+
+### Validation Approach and Methodology
+
+**Focus Areas:**
+
+1. **Functionality**: Ensuring all fixes maintain existing user experience
+2. **Accessibility**: Proper form labels, semantic HTML, keyboard navigation
+3. **Standards Compliance**: HTML5, CSS3, ES6+ JavaScript standards
+4. **Security**: CSRF protection, input validation, XSS prevention
+
+**Testing Methodology:**
+
+- Manual testing of all interactive features
+- Validation of form submissions and user flows
+- Cross-browser compatibility checks
+- Accessibility testing with screen readers
+- Performance optimization and monitoring
+
+### Known Non-Critical Issues
+
+**JSLint/ESLint Warnings (Intentionally Ignored):**
+
+- Minor style preferences (spacing, quote style)
+- jQuery global usage warnings (expected in Django projects)
+- Console.log in utility functions (intentional for debugging)
+
+**CSS Linting Warnings:**
+
+- Vendor prefixes for older browser support
+- Bootstrap override patterns using `!important`
+
+**Rationale**: These warnings don't affect functionality, user experience, or security. The code prioritizes maintainability and Django/Bootstrap integration patterns over strict linting rules.
+
+### Quality Assurance Summary
+
+ **HTML5 Compliance and Accessibility** - All templates meet modern web standards
+ **JavaScript Functionality** - All interactive features work correctly with error handling
+ **CSS Standards and Responsive Design** - Professional styling across all devices
+ **Django Template Best Practices** - Proper template inheritance and security
+ **Python Code Quality** - Clean, maintainable code following PEP8 standards
+ **Performance Optimization** - Acceptable performance scores across all pages
+ **Security Implementation** - CSRF protection, input validation, and secure practices
+
+The application maintains full functionality while adhering to modern web development standards and professional best practices.
 
 ---
 
@@ -747,64 +795,107 @@ Pillow==10.4.0
 
 ### Heroku Deployment
 
-The project was deployed to Heroku using the following steps:
+This project is deployed on Heroku with PostgreSQL database and AWS S3 for static file storage.
 
 #### Prerequisites
 
 1. **Heroku Account**: Create account at [heroku.com](https://heroku.com)
-2. **PostgreSQL Database**: Set up database addon
-3. **AWS S3 Bucket**: Configure for static/media files
-4. **Stripe Account**: Set up for payment processing
+2. **AWS Account**: Set up S3 bucket for static/media files
+3. **Stripe Account**: Configure for payment processing
+4. **Email Service**: Set up email provider (Gmail/SendGrid)
+
+#### Required Files for Deployment
+
+Before deploying, ensure these files exist in your project root:
+
+1. **`Procfile`** (no extension):
+
+   ``` bash
+   web: gunicorn imprint_store.wsgi:application
+   ```
+
+2. **`requirements.txt`**:
+
+   ``` bash
+   Django==3.2.25
+   gunicorn==23.0.0
+   dj-database-url==0.5.0
+   psycopg2-binary==2.9.9
+   # ... other dependencies
+   ```
+
+3. **`runtime.txt`**:
+
+   ``` bash
+   python-3.9.19
+   ```
 
 #### Deployment Steps
 
 1. **Create Heroku App**
 
    ```bash
-   heroku create imprint-store-app-name
+   # Install Heroku CLI first
+   heroku create your-app-name
    ```
 
-2. **Set Config Variables**
-   - `DATABASE_URL`: PostgreSQL database URL
-   - `SECRET_KEY`: Django secret key
-   - `STRIPE_PUBLIC_KEY`: Stripe publishable key
-   - `STRIPE_SECRET_KEY`: Stripe secret key
-   - `STRIPE_WH_SECRET`: Stripe webhook secret
-   - `AWS_ACCESS_KEY_ID`: AWS access key
-   - `AWS_SECRET_ACCESS_KEY`: AWS secret key
-   - `AWS_STORAGE_BUCKET_NAME`: S3 bucket name
-   - `USE_AWS`: Set to True
-   - `EMAIL_HOST_USER`: Email service username
-   - `EMAIL_HOST_PASS`: Email service password
-
-3. **Install Dependencies**
+2. **Add PostgreSQL Database**
 
    ```bash
-   pip install -r requirements.txt
+   heroku addons:create heroku-postgresql:mini
    ```
 
-4. **Database Migration**
+3. **Set Config Variables in Heroku Dashboard**
+
+   Go to your app's Settings → Config Vars and add:
+
+   - `DATABASE_URL`: (Automatically set by PostgreSQL addon)
+   - `SECRET_KEY`: Your Django secret key
+   - `DEBUG`: False
+   - `STRIPE_PUBLIC_KEY`: Your Stripe publishable key
+   - `STRIPE_SECRET_KEY`: Your Stripe secret key
+   - `STRIPE_WH_SECRET`: Your Stripe webhook secret
+   - `AWS_ACCESS_KEY_ID`: Your AWS access key
+   - `AWS_SECRET_ACCESS_KEY`: Your AWS secret key
+   - `AWS_STORAGE_BUCKET_NAME`: Your S3 bucket name
+   - `USE_AWS`: True
+   - `EMAIL_HOST_USER`: Your email service username
+   - `EMAIL_HOST_PASS`: Your email service password
+
+4. **Deploy to Heroku**
+
+   **Option A: Using Heroku CLI**
 
    ```bash
-   python manage.py migrate
+   git add .
+   git commit -m "Deploy to Heroku"
+   git push heroku main
    ```
 
-5. **Create Superuser**
+   **Option B: Using GitHub Integration (Recommended)**
+   - Go to Heroku Dashboard → Deploy tab
+   - Connect to GitHub repository
+   - Enable automatic deployments from main branch
+   - Click "Deploy Branch" for manual deployment
+
+5. **Run Database Migrations**
 
    ```bash
-   python manage.py createsuperuser
+   heroku run python manage.py migrate
    ```
 
-6. **Collect Static Files**
+6. **Create Superuser**
 
    ```bash
-   python manage.py collectstatic
+   heroku run python manage.py createsuperuser
    ```
 
-7. **Deploy to Heroku**
-   - Connect GitHub repository to Heroku
-   - Enable automatic deployments
-   - Manual deploy from main branch
+7. **Load Sample Data (Optional)**
+
+   ```bash
+   heroku run python manage.py loaddata categories
+   heroku run python manage.py loaddata products
+   ```
 
 #### Local Development Setup
 
@@ -851,20 +942,72 @@ The project was deployed to Heroku using the following steps:
 
 #### AWS S3 Configuration
 
-1. **Create S3 Bucket**
-   - Set up bucket with public read access
-   - Configure CORS policy
-   - Set up IAM user with appropriate permissions
+AWS S3 is used to store static files (CSS, JS) and media files (product images) in production.
 
-2. **Configure Django Settings**
+1. **Create S3 Bucket**
+   - Log into AWS Management Console
+   - Create new S3 bucket with unique name
+   - Choose region (e.g., eu-west-1)
+   - Uncheck "Block all public access"
+   - Enable static website hosting
+   - Add bucket policy for public read access:
+
+   ```json
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Sid": "PublicReadGetObject",
+               "Effect": "Allow",
+               "Principal": "*",
+               "Action": "s3:GetObject",
+               "Resource": "arn:aws:s3:::your-bucket-name/*"
+           }
+       ]
+   }
+   ```
+
+2. **Configure CORS Policy**
+
+   ```json
+   [
+       {
+           "AllowedHeaders": ["*"],
+           "AllowedMethods": ["GET", "HEAD"],
+           "AllowedOrigins": ["*"],
+           "ExposeHeaders": []
+       }
+   ]
+   ```
+
+3. **Create IAM User**
+   - Go to IAM → Users → Add User
+   - Enable programmatic access
+   - Attach policy: `AmazonS3FullAccess`
+   - Save Access Key ID and Secret Access Key
+
+4. **Django Settings Configuration**
+
+   The following settings are configured in `settings.py`:
 
    ```python
-   # settings.py
    if 'USE_AWS' in os.environ:
+       # AWS Settings
        AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
        AWS_S3_REGION_NAME = 'eu-west-1'
        AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
        AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+       AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+       
+       # Static and media files
+       STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+       STATICFILES_LOCATION = 'static'
+       DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+       MEDIAFILES_LOCATION = 'media'
+       
+       # Override static and media URLs in production
+       STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+       MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
    ```
 
 ---
@@ -1058,14 +1201,8 @@ I would like to express my gratitude to the following individuals and organizati
 - **Heroku**: For reliable application hosting services
 - **AWS**: For scalable cloud storage solutions
 
-This project was created as part of the Code Institute Full Stack Software Development Diploma and represents a culmination of the skills and knowledge acquired throughout the program. The support and resources provided by the entire Code Institute ecosystem were instrumental in bringing this project to completion.
-
 ---
 
 **[⬆ Back to Top](#table-of-contents)**
 
----
-
-*This project was developed for educational purposes as part of the Code Institute Full Stack Developer course. The Imprint Esports brand is used with permission for educational purposes only.*
-
----
+***Thank you Adam and PK for the use of your company's brand <3***

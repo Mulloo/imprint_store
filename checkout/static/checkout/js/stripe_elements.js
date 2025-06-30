@@ -1,31 +1,33 @@
-var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
-var clientSecret = $('#id_client_secret').text().slice(1, -1);
-var stripe = Stripe(stripePublicKey, { locale: 'en-IE' });
+/*global $, Stripe */
+
+var stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
+var clientSecret = $("#id_client_secret").text().slice(1, -1);
+var stripe = Stripe(stripePublicKey, { locale: "en-IE" });
 var elements = stripe.elements();
 var style = {
     base: {
-        color: '#000',
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSmoothing: 'antialiased',
-        fontSize: '16px',
-        '::placeholder': {
-            color: '#aab7c4'
+        color: "#000",
+        fontFamily: "\"Helvetica Neue\", Helvetica, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+            color: "#aab7c4"
         }
     },
     invalid: {
-        color: '#dc3545',
-        iconColor: '#dc3545'
+        color: "#dc3545",
+        iconColor: "#dc3545"
     }
 };
-var card = elements.create('card', {
+var card = elements.create("card", {
     style: style,
     hidePostalCode: true
 });
-card.mount('#card-element');
+card.mount("#card-element");
 
 // Handle realtime validation errors on the card element
-card.addEventListener('change', function (event) {
-    var errorDiv = document.getElementById('card-errors');
+card.addEventListener("change", function (event) {
+    var errorDiv = document.getElementById("card-errors");
     if (event.error) {
         var html = `
             <span class="icon" role="alert">
@@ -35,27 +37,27 @@ card.addEventListener('change', function (event) {
         `;
         $(errorDiv).html(html);
     } else {
-        errorDiv.textContent = '';
+        errorDiv.textContent = "";
     }
 });
 
 // Handle form submit
-var form = document.getElementById('payment-form');
+var form = document.getElementById("payment-form");
 
-form.addEventListener('submit', function(ev) {
+form.addEventListener("submit", function(ev) {
     ev.preventDefault();
-    card.update({ 'disabled': true});
-    $('#submit-button').attr('disabled', true);
+    card.update({ "disabled": true});
+    $("#submit-button").attr("disabled", true);
     
     // Hide form and show loading overlay
-    $('#payment-form').fadeOut(300);
-    $('#loading-overlay').fadeIn(300);
+    $("#payment-form").fadeOut(300);
+    $("#loading-overlay").fadeIn(300);
 
-    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+    var saveInfo = Boolean($("#id-save-info").attr("checked"));
     // From using {% csrf_token %} 
-    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+    var csrfToken = $("input[name=\"csrfmiddlewaretoken\"]").val();
     var postData = {
-        'csrfmiddlewaretoken': csrfToken,
+        "csrfmiddlewaretoken": csrfToken,
         'client_secret': clientSecret,
         'save_info': saveInfo,
     };

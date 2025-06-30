@@ -58,8 +58,9 @@
     {% endblock extra_js %}
 
     <title>
-      Imprint Store{% block extra_title %}
-      {% endblock extra_title %}
+      {% block head_title %}
+        Imprint Store{% block extra_title %}{% endblock extra_title %}
+      {% endblock head_title %}
     </title>
   </head>
 

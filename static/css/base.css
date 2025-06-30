@@ -759,3 +759,11 @@ textarea:focus-visible {
     outline: 2px solid var(--primary-blue);
     outline-offset: 2px;
 }
+
+select.form-control {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    height: auto; /* let it scale naturally */
+    min-height: 2.5rem; /* prevents it from being too short */
+}

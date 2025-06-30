@@ -2,6 +2,11 @@
 {% load static %}
 {% load bag_tools %}
 
+{% block meta %}
+    {{ block.super }}
+    <meta name="description" content="Review your Imprint Esports shopping bag. Update quantities, remove items, and proceed to secure checkout for your gaming merchandise order.">
+{% endblock meta %}
+
 {% block page_header %}
     <div class="container header-container">
         <div class="row">

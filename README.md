@@ -147,6 +147,24 @@ The design follows a professional esports-inspired color palette:
 - **Icons**: Font Awesome icons for intuitive user interface
 - **Background**: Clean, minimal backgrounds to highlight products
 
+### Wireframes and UX Design
+
+The application was designed with a mobile-first approach using wireframes to establish the user experience flow. The wireframes document the basic layout and user interactions for all key pages.
+
+**Wireframe's Documentation**:
+
+![wireframe](docs/wireframe.png)
+
+![wireframe production page](docs/wireframe_products.png)
+
+Key design decisions:
+
+- Clean, minimal layout focusing on product presentation
+- Consistent navigation across all device sizes
+- Intuitive shopping cart and checkout flow
+- Accessible design with high contrast and clear typography
+- Mobile-optimized touch targets and interactions
+
 ---
 
 ## Agile Methodology
@@ -461,6 +479,80 @@ For comprehensive feature documentation, see [FEATURES.md](FEATURES.MD)
 
 ---
 
+## Marketing and Business Strategy
+
+### Business Model
+
+Imprint Store operates as a Business-to-Consumer (B2C) e-commerce platform with the following key components:
+
+#### Revenue Streams
+
+- **Product Sales**: Primary revenue from merchandise sales
+- **Premium Products**: Higher margin items like gaming peripherals
+- **Brand Licensing**: Potential for licensing Imprint brand assets
+
+#### Value Proposition
+
+- **Authentic Esports Merchandise**: Official branded products for gaming enthusiasts
+- **Quality Assurance**: High-quality materials and printing for all products
+- **Community Connection**: Products that connect fans with the Imprint brand
+- **Convenient Shopping**: Easy-to-use platform with secure payment processing
+
+#### Target Market
+
+- **Primary**: Esports fans and competitive gaming enthusiasts
+- **Secondary**: Gaming merchandise collectors
+- **Tertiary**: General gaming community members
+
+### Digital Marketing Strategy
+
+#### Social Media Presence
+
+![Facebook Business Page Mockup](docs/facebook_mockup.png)
+
+**Facebook Business Page**: [Imprint Store on Facebook](https://www.facebook.com/profile.php?id=61569500775645)
+
+Our Facebook Business Page features:
+
+- Regular product showcases and promotions
+- Esports news and community engagement
+- Customer testimonials and reviews
+- Behind-the-scenes content from product development
+- Live Q&A sessions about products and the brand
+
+#### Email Marketing
+
+**Newsletter Signup**: Integrated MailChimp newsletter subscription
+
+- Weekly product updates and new releases
+- Exclusive discount codes for subscribers  
+- Esports industry news and Imprint updates
+- Early access to limited edition merchandise
+
+#### SEO Strategy
+
+- **Technical SEO**: Sitemap.xml and robots.txt implemented
+- **Content SEO**: Product descriptions optimized for search
+- **Meta Tags**: Comprehensive meta descriptions across all pages
+- **Performance SEO**: Fast loading times and mobile optimization
+
+#### Content Marketing
+
+- **Product Stories**: Behind-the-scenes content about product development
+- **Esports News**: Regular updates about the competitive gaming scene
+- **User Generated Content**: Customer photos and reviews
+- **Brand Storytelling**: Content about Imprint's mission and values
+
+### Customer Acquisition Strategy
+
+1. **Organic Search**: SEO-optimized product pages and content
+2. **Social Media**: Engaging content on Facebook and other platforms
+3. **Email Marketing**: Newsletter campaigns to drive repeat purchases
+4. **Referral Program**: Word-of-mouth marketing through satisfied customers
+5. **Community Engagement**: Active participation in esports communities
+
+---
+
 ## Validation
 
 ### HTML Validation
@@ -486,10 +578,113 @@ For comprehensive feature documentation, see [FEATURES.md](FEATURES.MD)
 
 ### Lighthouse Performance
 
-- **Performance**: 85+ scores across all pages
-- **Accessibility**: 90+ scores with WCAG compliance
-- **Best Practices**: 90+ scores for security and performance
-- **SEO**: 95+ scores for search engine optimization
+   Home
+
+- **Performance**: 62 scores
+- **Accessibility**: 98 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 100 scores for search engine optimization
+
+![Lightshouse_home](docs/lighthouse_home.png)
+
+   Products
+
+- **Performance**: 52 scores
+- **Accessibility**: 91 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 91 scores for search engine optimization
+
+![Lighthouse_products](docs/lighthouse_products.png)
+
+   Products Details
+
+- **Performance**: 62 scores
+- **Accessibility**: 85 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 91 scores for search engine optimization
+
+![Lighthouse_products_details_5](docs/lighthouse_products_details_5.png)
+
+   Products Review Form
+
+- **Performance**: 67 scores
+- **Accessibility**: 100 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 100 scores for search engine optimization
+
+![lighthouse_review_form](docs/lighthouse_review_form.png)
+
+   Profile
+
+- **Performance**: 65 scores
+- **Accessibility**: 90 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 100 scores for search engine optimization
+
+![Lighthouse_products](docs/lighthouse_profiles.png)
+
+   Wishlist empty
+
+- **Performance**: 64 scores
+- **Accessibility**: 95 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 100 scores for search engine optimization
+
+![Lighthouse_wishlist](docs/lighthouse_wishlist.png)
+
+   Wishlist 1 Item
+
+- **Performance**: 64 scores
+- **Accessibility**: 98 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 100 scores for search engine optimization
+
+![Lighthouse_wishlist_item](docs/lighthouse_whislist_item.png)
+
+   Shopping Bag
+
+- **Performance**: 69 scores
+- **Accessibility**: 100 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 100 scores for search engine optimization
+
+![lighthouse_shopping_bag](docs/lighthouse_shopping_bag.png)
+
+   Shopping Bag 1 Item
+
+- **Performance**: 66 scores
+- **Accessibility**: 83 scores with WCAG compliance
+- **Best Practices**: 96 scores for security and performance
+- **SEO**: 91 scores for search engine optimization
+
+![lighthouse_shopping_bag_1_item](docs/lighthouse_shopping_bag_1_item.png)
+
+   Checkout
+
+- **Performance**: 57 scores
+- **Accessibility**: 85 scores with WCAG compliance
+- **Best Practices**: 93 scores for security and performance
+- **SEO**: 91 scores for search engine optimization
+
+![lighthouse_checkout](docs/lighthouse_checkout.png)
+
+Checkout Success
+
+- **Performance**: 63 scores
+- **Accessibility**: 95 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 100 scores for search engine optimization
+
+![lighthouse_checkout](docs/lighthouse_checkout_success.png)
+
+   Product Management | Admin
+
+- **Performance**: 63 scores
+- **Accessibility**: 89 scores with WCAG compliance
+- **Best Practices**: 100 scores for security and performance
+- **SEO**: 91 scores for search engine optimization
+
+![lighthouse_product_management](docs/lighthouse_product_managment.png)
 
 ---
 

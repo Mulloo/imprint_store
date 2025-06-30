@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block meta %}
+    {{ block.super }}
+    <meta name="description" content="Shop premium Imprint Esports merchandise including gaming apparel, accessories, and peripherals. Official store for esports fans and gaming enthusiasts.">
+{% endblock meta %}
+
 {% block extra_css %}
 {{ block.super }}
 {% endblock extra_css %}

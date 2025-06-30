@@ -5,9 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const scrollIndicator = document.querySelector('.scroll-indicator');
     const newsletterSection = document.querySelector('.newsletter-peek');
     
-    console.log('Scroll indicator found:', scrollIndicator);
-    console.log('Newsletter section found:', newsletterSection);
-    
     if (scrollIndicator && newsletterSection) {
         console.log('Setting up scroll indicator click handler');
         scrollIndicator.addEventListener('click', function(e) {

@@ -39,7 +39,10 @@ class StripeWH_Handler:
                 [cust_email]
             )
         except Exception as e:
-            print(f'Error sending confirmation email: {e}')
+            # Log error instead of print for production
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f'Error sending confirmation email: {e}')
             return HttpResponse(
                 content=f'Error sending confirmation email: {e}', status=500)
 

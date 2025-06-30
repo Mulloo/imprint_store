@@ -39,11 +39,13 @@
                 </p>
                 {% endif %}
                 
-                {% if product.tags.all %}
+                {% if product.tags.exists %}
                 <p class="small mt-1 mb-0">
                     <i class="fas fa-tags mr-1 text-muted"></i>
                     {% for tag in product.tags.all %}
-                        <a href="{% url 'products' %}?tag={{ tag.name }}" class="text-muted">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+                        {% if tag and tag.name %}
+                            <a href="{% url 'products' %}?tag={{ tag.name|urlencode }}" class="text-muted">{{ tag.name }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endif %}
                     {% endfor %}
                 </p>
                 {% endif %}
@@ -150,17 +152,10 @@
                                 {% endfor %}
                             </div>
                             <small class="text-muted">
-                                By {{ review.user.username }} on {{ review.created_date|date:"F d, Y" }}
+                                By {{ review.user.username }}
                             </small>
                         </div>
                         <p class="review-comment mt-2">{{ review.comment }}</p>
-                        
-                        {% if request.user == review.user %}
-                        <div class="mt-2">
-                            <a href="{% url 'edit_review' review.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                            <a href="{% url 'delete_review' review.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
-                        </div>
-                        {% endif %}
                     </div>
                     {% endfor %}
                 {% else %}

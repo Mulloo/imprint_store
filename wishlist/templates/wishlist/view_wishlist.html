@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block meta %}
-    {{ block.super }}
-    <meta name="description" content="Manage your Imprint Esports wishlist. Save your favorite gaming merchandise and accessories for future purchase. Easy wishlist management and shopping.">
-{% endblock meta %}
+{% block meta_description %}
+<meta name="description" content="Manage your Imprint Esports wishlist. Save your favorite gaming merchandise and accessories for future purchase. Easy wishlist management and shopping.">
+{% endblock meta_description %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/wishlist.css' %}">

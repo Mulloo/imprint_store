@@ -2,10 +2,9 @@
 {% load static %}
 {% load bag_tools %}
 
-{% block meta %}
-    {{ block.super }}
-    <meta name="description" content="Secure checkout for your Imprint Esports order. Complete your purchase with safe payment processing and fast delivery options.">
-{% endblock meta %}
+{% block meta_description %}
+<meta name="description" content="Secure checkout for your Imprint Esports order. Complete your purchase with safe payment processing and fast delivery options.">
+{% endblock meta_description %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">

@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block meta %}
-    {{ block.super }}
-    <meta name="description" content="View detailed information about {{ product.name }} from Imprint Esports. Quality gaming merchandise with full product specifications and customer reviews.">
-{% endblock meta %}
+{% block meta_description %}
+<meta name="description" content="View detailed information about {{ product.name }} from Imprint Esports. Quality gaming merchandise with full product specifications and customer reviews.">
+{% endblock meta_description %}
 
 {% block page_header %}
 <div class="container header-container">

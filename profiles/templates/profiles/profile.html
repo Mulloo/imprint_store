@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block meta %}
-    {{ block.super }}
-    <meta name="description" content="Manage your Imprint Esports account profile. Update personal information, view order history, and manage your account settings securely.">
-{% endblock meta %}
+{% block meta_description %}
+<meta name="description" content="Manage your Imprint Esports account profile. Update personal information, view order history, and manage your account settings securely.">
+{% endblock meta_description %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">

@@ -2,10 +2,9 @@
 {% load static %}
 {% load bag_tools %}
 
-{% block meta %}
-    {{ block.super }}
-    <meta name="description" content="Review your Imprint Esports shopping bag. Update quantities, remove items, and proceed to secure checkout for your gaming merchandise order.">
-{% endblock meta %}
+{% block meta_description %}
+<meta name="description" content="Review your Imprint Esports shopping bag. Update quantities, remove items, and proceed to secure checkout for your gaming merchandise order.">
+{% endblock meta_description %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -43,18 +42,29 @@
                         </div>
                         {% for item in bag_items %}
                             <div class="row">
-                                <div class="col-12 col-sm-6 mb-2">
-                                    {% include "bag/product-image.html" %}
+                                <div class="col-5 my-auto">
+                                    <img
+                                        src="{{ item.product.image.url }}"
+                                        class="w-100"
+                                        alt="{{ item.product.name }}"
+                                        width="75"
+                                        height="75">
                                 </div>
-                                <div class="col-12 col-sm-6 mb-2">
-                                    {% include "bag/product-info.html" %}
+                                <div class="col-7 my-auto">
+                                    <p class="mt-3 mb-1 text-black">
+                                        <strong>{{ item.product.name }}</strong>
+                                    </p>
+                                    {% if item.product.has_sizes %}
+                                        <p class="my-0"><strong>Size: </strong>{% if item.size %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                                    {% endif %}
+                                    <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                 </div>
                                 <div class="col-12 col-sm-6 order-sm-last">
                                     <p class="my-0">Price Each: €{{ item.product.price }}</p>
                                     <p><strong>Subtotal: </strong>€{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    {% include "bag/quantity-form.html" %}
+                                    {% include "bag/quantity-form.html" with view_context="mobile" %}
                                 </div>
                             </div>
                             <div class="row"><div class="col"><hr></div></div>
@@ -80,16 +90,20 @@
                             {% for item in bag_items %}
                                 <tr>
                                     <td class="p-3 w-25">
-                                        {% include "bag/product-image.html" %}
+                                        <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
                                     </td>
                                     <td class="py-3">
-                                        {% include "bag/product-info.html" %}
+                                        <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                                        {% if item.product.has_sizes %}
+                                            <p class="my-0"><strong>Size: </strong>{% if item.size %}{{ item.size|upper }}{% else %}N/A{% endif %}</p>
+                                        {% endif %}
+                                        <p class="my-0 small text-muted">SKU: {{ item.product.sku|upper }}</p>
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.product.price }}</p>
                                     </td>
                                     <td class="py-3 w-25">
-                                        {% include "bag/quantity-form.html" %}
+                                        {% include "bag/quantity-form.html" with view_context="desktop" %}
                                     </td>
                                     <td class="py-3">
                                         <p class="my-0">€{{ item.product.price | calc_subtotal:item.quantity }}</p>
@@ -124,7 +138,11 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script src="{% static 'products/js/quantity_input.js' %}"></script>
+<!-- Remove this line - it's causing conflicts -->
+<!-- <script src="{% static 'products/js/quantity_input.js' %}"></script> -->
+
+{% include 'products/includes/quantity_input_script.html' %}
+
 <script>
     $('.btt-link').click(function(e) {
         window.scrollTo(0,0)
@@ -141,7 +159,9 @@
     // Remove item and reload on click
     $('.remove-item').click(function(e) {
         var csrfToken = "{{ csrf_token }}";
-        var itemId = $(this).attr('id').split('remove_')[1];
+        var fullId = $(this).attr('id');
+        var parts = fullId.split('_');
+        var itemId = parts[1];
         var size = $(this).data('product_size');
         var url = `/bag/remove/${itemId}/`;
         var data = {'csrfmiddlewaretoken': csrfToken, 'product_size': size};

@@ -29,7 +29,13 @@
                         {% if field.name != 'image' %}
                             {{ field | as_crispy_field }}
                         {% else %}
-                            {{ field }}
+                            <div class="form-group">
+                                <div class="rounded border p-3">
+                                    <label for="new-image">Image:</label>
+                                    <input type="file" class="form-control-file" name="image" accept="image/*" id="new-image">
+                                    <span class="text-danger" id="filename"></span>
+                                </div>
+                            </div>
                         {% endif %}
                     {% endfor %}
                     <div class="text-right">
@@ -47,7 +53,9 @@
     <script>
         $('#new-image').change(function(){
             var file = $('#new-image')[0].files[0];
-            $('#image-name').text(`Image will be set to: ${file.name}`);
+            if (file) {
+                $('#filename').text(`Image will be set to: ${file.name}`);
+            }
         });
     </script>
 {% endblock postloadjs %}

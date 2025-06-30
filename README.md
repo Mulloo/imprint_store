@@ -1,8 +1,8 @@
 # Imprint Store
 
-![imprint logo](doc/imprint.png)
+![imprint logo](docs/imprint.png)
 
-**Developer: [ Daniel Mullooly - Mulloo ]**
+**Developer: [Daniel Mullooly - Mulloo ]**
 
 [![Live Site](https://img.shields.io/badge/🌐%20Live%20Site-Visit%20Now-brightgreen?style=for-the-badge)](https://imprint-store-3d6ba50a85bd.herokuapp.com/)
 [![GitHub](https://img.shields.io/badge/📁%20GitHub-Repository-blue?style=for-the-badge)](https://github.com/Mulloo/imprint_store)
@@ -24,6 +24,7 @@
   - [Validation](#validation)
   - [Technologies Used](#technologies-used)
   - [Deployment](#deployment)
+  - [Bugs and Issues](#bugs-and-issues)
   - [Credits](#credits)
   - [Acknowledgements](#acknowledgements)
 
@@ -122,7 +123,7 @@ The design follows a professional esports-inspired color palette:
 - **Warning**: #FFC107 (Yellow) - Alerts
 - **Danger**: #DC3545 (Red) - Errors
 
-![Imprint Pallet](Docs/imprint_palette.png)
+![Imprint Pallet](docs/imprint_palette.png)
 
 ### Typography
 
@@ -173,7 +174,7 @@ This project was developed using Agile methodology with the following approach:
 
 ### Entity Relationship Diagram
 
-![Entity Relationship Diagram](Docs/gen-erd.png)
+![Entity Relationship Diagram](docs/gen-erd.png)
 
 ### Core Models
 
@@ -350,8 +351,8 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### User Authentication System
 
-![Login](Docs/login_page.png)
-![Sign Up](Docs/register_page.png)
+![Login](docs/login_page.png)
+![Sign Up](docs/register_page.png)
 
 - User registration with email verification
 - Secure login/logout functionality
@@ -361,7 +362,7 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Product Catalog
 
-![Product Catalog](Docs/product_page.png)
+![Product Catalog](docs/product_page.png)
 
 - Comprehensive product listings with pagination
 - Product search functionality
@@ -371,7 +372,7 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Product Detail Pages
 
-![Product Details](Docs/product_details_page.png)
+![Product Details](docs/product_details_page.png)
 
 - Detailed product information and images
 - Customer reviews and ratings
@@ -381,8 +382,8 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Shopping Cart System
 
-![Shopping Cart Full](Docs/bag_full.png)
-![Shopping Cart Empty](Docs/bag_empty.png)
+![Shopping Cart Full](docs/bag_full.png)
+![Shopping Cart Empty](docs/bag_empty.png)
 
 - Session-based shopping cart
 - Quantity adjustment capabilities
@@ -392,7 +393,7 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Secure Checkout Process
 
-![Checkout Process](Docs/checkout_page.png)
+![Checkout Process](docs/checkout_page.png)
 
 - Stripe payment integration
 - Order summary and confirmation
@@ -402,8 +403,8 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Wishlist Management
 
-![Wishlist](Docs/wishlist_full_page.png)
-![Wishlist](Docs/wishlist_empty.png)
+![Wishlist](docs/wishlist_full_page.png)
+![Wishlist](docs/wishlist_empty.png)
 
 - Personal product wishlist for registered users
 - Easy add/remove functionality
@@ -412,8 +413,8 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Review System
 
-![Reviews Profile](Docs/user_review_profile_page.png)
-![Reviews Product details Page](Docs/user_review_product_details.png)
+![Reviews Profile](docs/user_review_profile_page.png)
+![Reviews Product details Page](docs/user_review_product_details.png)
 
 - Product review and rating system
 - User-generated content moderation
@@ -422,7 +423,7 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Admin Interface
 
-![Admin Interface](Docs/admin_page.png)
+![Admin Interface](docs/admin_page.png)
 
 - Django admin panel for product management
 - Order monitoring and management
@@ -431,7 +432,7 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 #### Responsive Design
 
-![Responsive Design](Docs/responsive.png)
+![Responsive Design](docs/responsive.png)
 
 - Mobile-first responsive design
 - Cross-browser compatibility
@@ -671,6 +672,122 @@ The project was deployed to Heroku using the following steps:
 
 ---
 
+## Bugs and Issues
+
+During the development process, several bugs and challenges were encountered and resolved. This section documents the major issues and their solutions.
+
+### Major Bugs Encountered
+
+#### 1. Python Version Compatibility - F-String Issues
+
+**Problem**: When upgrading Python versions or deploying to different environments, f-string syntax caused compatibility issues with older Python versions, particularly multiline f-strings which can be problematic.
+
+**Error Messages**:
+
+``` bash
+SyntaxError: invalid syntax
+  File "views.py", line 45
+    return f"Order {self.order_number}"
+             ^
+SyntaxError: invalid syntax
+```
+
+**Root Cause**: F-strings were introduced in Python 3.6, and multiline f-strings can cause particular issues with parsing and deployment environments running older Python versions.
+
+**Solution**: Created a custom AST-based script to detect multiline f-strings throughout the codebase for systematic replacement.
+
+**Detection Script Used** (`findfstring.py`):
+
+``` python
+import ast, pathlib
+
+def multiline_fstrings(path="."):
+    hits = []
+    for p in pathlib.Path(path).rglob("*.py"):
+        if "venv" in p.parts or p.name.startswith('.'):
+            continue
+        try:
+            tree = ast.parse(p.read_text(encoding="utf-8"))
+        except SyntaxError:
+            continue
+        for node in ast.walk(tree):
+            if isinstance(node, ast.JoinedStr):
+                if node.lineno != node.end_lineno:
+                    hits.append(f"{p}:{node.lineno}")
+    return hits
+
+hits = multiline_fstrings()
+print(f"Found {len(hits)} multiline f-strings:\n")
+print("\n".join(hits))
+```
+
+**How It Works**:
+
+- **AST Parsing**: Uses Python's Abstract Syntax Tree to analyze code structure
+- **JoinedStr Detection**: Identifies f-string nodes in the AST
+- **Multiline Detection**: Checks if f-string spans multiple lines (`lineno != end_lineno`)
+- **Path Filtering**: Skips virtual environments and hidden files
+- **Error Handling**: Continues processing even if individual files have syntax errors
+
+**Usage**:
+
+``` bash
+
+# Run in project root directory
+python findfstring.py
+
+# Example output:
+Found 3 multiline f-strings:
+
+checkout/models.py:45
+products/views.py:128
+profiles/views.py:67
+```
+
+**Files Modified**: After detection, manually converted problematic multiline f-strings
+
+**Resolution**: Successfully identified and converted all multiline f-strings, ensuring compatibility across different Python environments and deployment platforms.
+
+#### 2. Static Files Not Loading on Heroku
+
+**Problem**: CSS and JavaScript files were not loading properly after deployment to Heroku.
+
+**Error**: 404 errors for static files in production environment.
+
+**Solution**:
+
+- Configured `STATICFILES_STORAGE` for AWS S3
+- Added proper `collectstatic` configuration
+
+#### 3. Hero Section Background Image Missing
+
+**Problem**: Hero section displayed without background image after styling updates.
+
+**Solution**:
+
+- Added proper CSS background-image property with Django static file handling
+- Configured hero section styling with overlay and responsive design
+- Ensured image path used `{% static %}` template tag for proper static file serving
+
+#### 4. Scroll Indicator Animation Issues
+
+**Problem**: Bouncing arrow animation not working properly, with unwanted circular pulse effects.
+
+**Solution**:
+
+- Fixed CSS keyframes to maintain proper centering during bounce animation
+- Removed conflicting `::after` pseudo-element creating unwanted pulse rings
+- Simplified animation to clean bounce effect without distracting elements
+
+### Debugging Tools Used
+
+- **Django Debug Toolbar**: For database query optimization
+- **Browser DevTools**: For frontend debugging and animation testing
+- **Heroku Logs**: For production error tracking
+- **AWS CloudWatch**: For monitoring static file delivery
+
+---
+
 ## Credits
 
 ### Content and Media
@@ -753,3 +870,5 @@ This project was created as part of the Code Institute Full Stack Software Devel
 ---
 
 *This project was developed for educational purposes as part of the Code Institute Full Stack Developer course. The Imprint Esports brand is used with permission for educational purposes only.*
+
+---

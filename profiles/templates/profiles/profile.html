@@ -76,43 +76,40 @@
     </div>
   </div>
 
-  <div>
-    <a href="{% url 'wishlist:view_wishlist' %}" class="btn btn-black rounded-0 text-uppercase float-right">View Wishlist</a>
+  <div class="row">
+    <div class="col-12">
+      <a href="{% url 'wishlist:view_wishlist' %}" class="btn btn-black rounded-0 text-uppercase float-right">View Wishlist</a>
+    </div>
   </div>
 </div>
 
-<hr class="mt-5">
-
-<h4 class="mb-3">My Reviews</h4>
-<div class="row">
-  {% for r in reviews %}
-  <div class="col-12 mb-3">
-    <div class="review-card p-3 border rounded">
-      <strong>{{ r.title }}</strong>
-      <span class="review-stars d-block mb-1">
-        {% for i in "12345" %}
-          {% if forloop.counter <= r.rating %}
-            <span class="star-filled">★</span>
-          {% else %}
-            <span class="star-empty text-muted">☆</span>
-          {% endif %}
-        {% endfor %}
-      </span>
-      <small class="text-muted d-block mb-2">
-        For <a href="{% url 'product_detail' r.product.id %}">{{ r.product.name }}</a> • {{ r.created_at|date:"M d, Y" }}
-      </small>
-      <p class="mb-1">{{ r.content|linebreaksbr }}</p>
-      <div class="mt-2">
-        <a href="{% url 'edit_review' r.product.id r.id %}" class="btn btn-sm btn-outline-primary">Edit</a>
-        <a href="{% url 'delete_review' r.product.id r.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
-      </div>
+<!-- Reviews Section - Now properly contained -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <hr>
+      <h4 class="logo-font mb-4">My Reviews</h4>
+      <hr>
     </div>
   </div>
-  {% empty %}
-  <div class="col-12">
-    <p class="text-muted">You haven't written any reviews yet.</p>
+  
+  <div class="row">
+    {% for r in reviews %}
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+      {% include "products/reviews/review_card.html" with r=r %}
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <div class="text-center py-4">
+        <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+        <p class="text-muted">You haven't written any reviews yet.</p>
+        <a href="{% url 'products' %}" class="btn btn-outline-black">
+          <i class="fas fa-shopping-bag mr-2"></i>Start Shopping
+        </a>
+      </div>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
 {% endblock %}
 

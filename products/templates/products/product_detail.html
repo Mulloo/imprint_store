@@ -129,37 +129,51 @@
     <div class="row">
         <div class="col-12">
             <div class="reviews-section mt-5">
-                <h3>Customer Reviews</h3>
-                
-                {% if request.user.is_authenticated %}
-                <div class="mb-4">
-                    <a href="{% url 'add_review' product.id %}" class="btn btn-primary">Write a Review</a>
-                </div>
-                {% endif %}
-                
-                {% if product.reviews.all %}
-                    {% for review in product.reviews.all %}
-                    <div class="review-item border-bottom pb-3 mb-3">
-                        <div class="review-header">
-                            <h5>{{ review.title }}</h5>
-                            <div class="review-rating">
-                                {% for i in "12345" %}
-                                    {% if forloop.counter <= review.rating %}
-                                        <i class="fas fa-star text-warning"></i>
-                                    {% else %}
-                                        <i class="far fa-star text-muted"></i>
-                                    {% endif %}
-                                {% endfor %}
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3 class="mb-3">Customer Reviews</h3>
+                        {% if product.reviews.exists %}
+                            <div class="mb-3">
+                                <span class="text-muted">
+                                    <i class="fas fa-star text-warning mr-1"></i>
+                                    {{ product.rating|floatformat:1 }} out of 5 
+                                    ({{ product.reviews.count }} review{{ product.reviews.count|pluralize }})
+                                </span>
                             </div>
-                            <small class="text-muted">
-                                By {{ review.user.username }}
-                            </small>
-                        </div>
-                        <p class="review-comment mt-2">{{ review.comment }}</p>
+                        {% endif %}
                     </div>
-                    {% endfor %}
+                    <div class="col-md-4 text-md-right">
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'add_review' product.id %}" class="btn btn-black rounded-0">
+                                <i class="fas fa-edit mr-2"></i>Write a Review
+                            </a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}?next={{ request.get_full_path }}" class="btn btn-outline-black rounded-0">
+                                <i class="fas fa-sign-in-alt mr-2"></i>Login to Review
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <hr class="my-4">
+                
+                {% if product.reviews.exists %}
+                    <div class="reviews-container">
+                        {% for review in product.reviews.all %}
+                            {% include "products/reviews/review_card.html" with r=review %}
+                        {% endfor %}
+                    </div>
                 {% else %}
-                    <p class="text-muted">No reviews yet. Be the first to review this product!</p>
+                    <div class="text-center py-5">
+                        <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No reviews yet</h5>
+                        <p class="text-muted">Be the first to share your thoughts about this product!</p>
+                        {% if request.user.is_authenticated %}
+                            <a href="{% url 'add_review' product.id %}" class="btn btn-black rounded-0 mt-3">
+                                <i class="fas fa-star mr-2"></i>Write the First Review
+                            </a>
+                        {% endif %}
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -169,47 +183,5 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script type="text/javascript">
-    // Disable +/- buttons outside 1-99 range
-    function handleEnableDisable(itemId) {
-        var currentValue = parseInt($(`#id_qty_${itemId}`).val());
-        var minusDisabled = currentValue < 2;
-        var plusDisabled = currentValue > 98;
-        $(`#decrement-qty_${itemId}`).prop('disabled', minusDisabled);
-        $(`#increment-qty_${itemId}`).prop('disabled', plusDisabled);
-    }
-
-    // Ensure proper enabling/disabling of all inputs on page load
-    var allQtyInputs = $('.qty_input');
-    for(var i = 0; i < allQtyInputs.length; i++){
-        var itemId = $(allQtyInputs[i]).data('item_id');
-        handleEnableDisable(itemId);
-    }
-
-    // Check enable/disable every time the input is changed
-    $('.qty_input').change(function() {
-        var itemId = $(this).data('item_id');
-        handleEnableDisable(itemId);
-    });
-
-    // Increment quantity
-    $('.increment-qty').click(function(e) {
-        e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue + 1);
-        var itemId = $(this).data('item_id');
-        handleEnableDisable(itemId);
-    });
-
-    // Decrement quantity
-    $('.decrement-qty').click(function(e) {
-        e.preventDefault();
-        var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
-        var currentValue = parseInt($(closestInput).val());
-        $(closestInput).val(currentValue - 1);
-        var itemId = $(this).data('item_id');
-        handleEnableDisable(itemId);
-    });
-</script>
+{% include "products/includes/quantity_input_script.html" %}
 {% endblock %}

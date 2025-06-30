@@ -119,12 +119,12 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<script src="{% static 'products/js/quantity_input.js' %}"></script>
 <script>
     $('.btt-link').click(function(e) {
         window.scrollTo(0,0)
     })
 </script>
-{% include "products/includes/quantity_input_script.html" %}
 
 <script>
     // Update quantity on click

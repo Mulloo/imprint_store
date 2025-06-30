@@ -24,6 +24,16 @@ def all_products(request):
     categories = None
     sort = None
     direction = None
+    user_wishlist_products = []
+
+    # Get user's wishlist if authenticated
+    if request.user.is_authenticated:
+        try:
+            from wishlist.models import Wishlist
+            wishlist = Wishlist.objects.get(user=request.user)
+            user_wishlist_products = list(wishlist.products.values_list('id', flat=True))
+        except Wishlist.DoesNotExist:
+            pass
 
     if request.GET:
         if 'sort' in request.GET:
@@ -64,6 +74,7 @@ def all_products(request):
         'search_term': query,
         'current_categories': categories,
         'current_sorting': current_sorting,
+        'user_wishlist_products': user_wishlist_products,
     }
 
     return render(request, 'products/products.html', context)

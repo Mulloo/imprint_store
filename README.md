@@ -349,7 +349,7 @@ For detailed testing documentation, see [TEST.md](TEST.MD)
 
 ### Existing Features
 
-- *Note: Some CSS styles have changed since the images were collected*
+- *Note: CSS styles have changed since the images were collected*
 
 #### User Authentication System
 

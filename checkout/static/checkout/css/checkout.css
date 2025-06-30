@@ -63,15 +63,69 @@ select option:invalid {
     align-items: center;
     justify-content: center;
     margin: 0;
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
 }
 
 .loading-spinner h1 {
     text-align: center;
     color: white;
     font-size: 2rem;
+    margin: 0;
+}
+
+.loading-spinner .icon {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.loading-spinner .fa-spinner {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Force spinner animation even with reduced motion preference */
+#loading-overlay .fa-spin {
+    animation: fa-spin 2s infinite linear !important;
+    animation-delay: 0s !important;
+    animation-duration: 2s !important;
+    animation-iteration-count: infinite !important;
+    transform-origin: center !important;
+}
+
+/* Override any prefers-reduced-motion for loading spinner */
+@media (prefers-reduced-motion: reduce) {
+    #loading-overlay .fa-spin {
+        animation: fa-spin 2s infinite linear !important;
+        animation-delay: 0s !important;
+        animation-duration: 2s !important;
+        animation-iteration-count: infinite !important;
+    }
+}
+
+/* Define the keyframes if not already defined */
+@keyframes fa-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fallback custom spinner animation */
+@keyframes custom-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Apply custom animation as fallback */
+#loading-overlay .fa-spinner {
+    animation: custom-spin 2s infinite linear !important;
+    transform-origin: center !important;
 }

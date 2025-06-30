@@ -2,7 +2,7 @@
 
 ![imprint logo](docs/imprint.png)
 
-**Developer: [Daniel Mullooly - Mulloo ]**
+**Developer: [ Daniel Mullooly aka Mulloo ]**
 
 [![Live Site](https://img.shields.io/badge/🌐%20Live%20Site-Visit%20Now-brightgreen?style=for-the-badge)](https://imprint-store-3d6ba50a85bd.herokuapp.com/)
 [![GitHub](https://img.shields.io/badge/📁%20GitHub-Repository-blue?style=for-the-badge)](https://github.com/Mulloo/imprint_store)

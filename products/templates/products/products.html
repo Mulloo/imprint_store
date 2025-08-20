@@ -84,12 +84,12 @@
                                      src="{{ product.image.url }}" 
                                      alt="{{ product.name }}" 
                                      loading="lazy"
-                                     onerror="this.onerror=null; this.src='{{ MEDIA_URL }}noimage.png';">
+                                     onerror="this.onerror=null; this.src='{{ MEDIA_URL }}noimage.webp';">
                             </a>
                             {% else %}
                             <a href="{% url 'product_detail' product.id %}">
                                 <img class="card-img-top img-fluid" 
-                                     src="{{ MEDIA_URL }}noimage.png"
+                                     src="{{ MEDIA_URL }}noimage.webp"
                                      alt="{{ product.name }}" 
                                      loading="lazy">
                             </a>

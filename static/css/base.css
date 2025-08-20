@@ -441,7 +441,7 @@ a.category-badge > span.badge:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../../media/imprint_hero.jpg') center/cover no-repeat;
+    background: url('../../media/imprint_hero.webp') center/cover no-repeat;
     opacity: 0.3;
     z-index: 1;
 }

@@ -215,4 +215,4 @@ class ReviewDeleteView(ReviewAuthorRequiredMixin, DeleteView):
     template_name = "products/reviews/review_confirm_delete.html"  # Fixed path
 
     def get_success_url(self):
-        return self.object.product.get_absolute_url()
+        return self.object.get_absolute_url()

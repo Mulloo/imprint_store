@@ -1,0 +1,242 @@
+/* Home page specific styles extracted from base.css */
+
+.hero-title {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.hero-section {
+    min-height: calc(100vh - var(--header-height-desktop));
+    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-blue) 50%, var(--primary-green) 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../media/imprint_hero.webp') center/cover no-repeat;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.hero-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+.shop-now-button {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.shop-now-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+.hero-content {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-black), var(--primary-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 2.5rem;
+    cursor: pointer;
+    z-index: 10;
+    animation: bounce 2s infinite ease-in-out !important;
+    transition: color 0.3s ease;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator:hover {
+    color: white;
+    animation-play-state: paused;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-12px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-6px);
+    }
+}
+
+.newsletter-peek {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 4rem 0;
+    margin-top: -2px;
+    position: relative;
+}
+
+.newsletter-peek::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-purple), var(--primary-blue), var(--primary-green));
+}
+
+.newsletter-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.newsletter-wrapper h2 {
+    color: var(--primary-black);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.newsletter-wrapper h2 i {
+    color: var(--primary-blue);
+}
+
+.newsletter-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.newsletter-wrapper .form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-wrapper .mc-field-group {
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.newsletter-wrapper label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--primary-black);
+}
+
+.newsletter-wrapper .form-control {
+    border-radius: 12px;
+    border: 2px solid var(--border-light);
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.newsletter-wrapper .form-control:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    background: white;
+}
+
+.btn-subscribe {
+    background: linear-gradient(135deg, var(--primary-blue), var(--primary-purple));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 2rem auto 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-subscribe:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3);
+    background: linear-gradient(135deg, var(--primary-purple), var(--primary-blue));
+}
+
+.indicates-required {
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.asterisk {
+    color: var(--danger);
+    font-weight: bold;
+}
+
+@media (max-width: 991px) {
+    .hero-section {
+        min-height: calc(100vh - var(--header-height-mobile));
+    }
+}
+
+@media (max-width: 768px) {
+    .newsletter-wrapper {
+        padding: 2rem 1.5rem;
+        margin: 0 1rem;
+    }
+    .newsletter-wrapper .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    .newsletter-wrapper h2 {
+        font-size: 1.5rem;
+    }
+}
+

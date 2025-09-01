@@ -182,33 +182,5 @@
 
 {% block postloadjs %}
     {{ block.super }}
-    <script>
-        $('.btt-link').click(function(e){
-            window.scrollTo(0,0)
-        })
-    </script>
-
-
-        <script>
-    $('#sort-selector').change(function () {
-        var select = $(this);
-        var selectedVal = select.val();  
-        var currentUrl = new URL(window.location);
-
-        if (selectedVal != "reset") {
-            var sort = selectedVal.split("_")[0];
-            var direction = selectedVal.split("_")[1];
-
-            currentUrl.searchParams.set("sort", sort);
-            currentUrl.searchParams.set("direction", direction);
-
-            window.location.replace(currentUrl);
-        } else {
-            currentUrl.searchParams.delete("sort");
-            currentUrl.searchParams.delete("direction");
-
-            window.location.replace(currentUrl);
-        }
-    });
-</script>
+    <script src="{% static 'products/js/listing.js' %}"></script>
 {% endblock postloadjs %}

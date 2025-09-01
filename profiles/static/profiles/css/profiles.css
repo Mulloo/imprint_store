@@ -1,31 +1,19 @@
-.order-history-table {
-    height: 416px; 
-    overflow: auto;
-}
+.order-history-table { height: 416px; overflow: auto; }
 
-#profile-update-form .form-control {
-    color: black;
-}
+#profile-update-form .form-control { color: var(--text-primary); }
 
-#profile-update-form input::placeholder {
-    color: #6c757d;
-}
+#profile-update-form input::placeholder { color: var(--text-light); }
 
 #id_default_country,
-#id_default_country option:not(:first-child){
-    color: black;
+#id_default_country option:not(:first-child){ color: var(--primary-black); }
 
-}
-
-#id_default_country option:first-child{
-    color: #aab7c4;
-}
+#id_default_country option:first-child{ color: var(--text-light); }
 
 /* Review section styles */
 .review-card {
-    background: #fff;
-    border: 1px solid #e4e4e4;
-    border-radius: .5rem;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: .75rem;
     padding: 1rem 1.25rem;
     margin-bottom: 1rem;
 }
@@ -33,10 +21,8 @@
 .review-stars {
     font-size: 1rem;
     letter-spacing: .05em;
-    color: #f5c518;
+    color: var(--primary-blue);
 }
 
-.review-stars .text-muted {
-    color: #e2e2e2 !important;
-}
+.review-stars .text-muted { color: var(--border-light) !important; }
 

@@ -158,7 +158,6 @@ Usability was tested with the below user acceptance testing, sent to new users t
 
 - Minor: Toast messages may overlap on very small screens
 - Minor: Product images may load slowly on slower connections
-- Minor: payment loading screen not centered and stuck top left of screen
 
 ## Test Environment
 

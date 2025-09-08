@@ -116,14 +116,23 @@ The design follows a professional esports-inspired color palette:
 
 ### Color Palette
 
-- **Primary**: #000000 (Black) - Strong, professional
-- **Secondary**: #FFFFFF (White) - Clean, modern
-- **Accent**: #007BFF (Blue) - Trust, technology
-- **Success**: #28A745 (Green) - Positive actions
-- **Warning**: #FFC107 (Yellow) - Alerts
-- **Danger**: #DC3545 (Red) - Errors
+Core brand + UI
 
-![Imprint Pallet](docs/imprint_palette.png)
+Midnight Navy: #111623 — header/nav, primary text on light backgrounds
+
+Off-White: #F8FAFC — page background
+
+Pure White: #FFFFFF — cards/surfaces
+
+Imprint Mint (primary accent): #56FFCF — highlights, ratings, UI accents
+
+Electric Cyan (secondary glow): #70CFE6 — hero artwork & subtle accents
+
+Slate Blue: #364C7C — secondary accent / headings on dark
+
+Indigo/Purple: #675895 — esports neon tones from the hero
+
+![Imprint Pallet](docs/design_pallet_img.png)
 
 ### Typography
 

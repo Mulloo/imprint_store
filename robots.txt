@@ -1,3 +1,15 @@
 User-agent: *
-Disallow: /accounts/
+# Block non-public or duplicate pages
+Disallow: /accounts/login/
+Disallow: /accounts/signup/
+Disallow: /accounts/password/
+Disallow: /bag/
+Disallow: /checkout/
+Disallow: /admin/
+
+# Allow product and category browsing
+Allow: /products/
+Allow: /
+
+# Sitemap location
 Sitemap: https://imprint-store-3d6ba50a85bd.herokuapp.com/sitemap.xml
